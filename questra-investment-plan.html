@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en" xml:lang="en">
+<head>
+    <title>Questra - Income Calculator</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Calculate questra weekly income" />
+    <meta name="author" content="Nguyễn Tuấn Minh" />
+    <meta property="og:title" content="Questra Income Calculator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://questraglobal.info/" />
+    <meta property="og:image" content="http://questraglobal.info/images/questra-holding-logo-red.png" />
+    <meta property="og:site_name" content="Questra - Income Calculator" />
+    <meta property="og:description" content="Calculate and predict your questra income. Help you plan your investment" />
+    <!--Favicon-->
+    <link rel="shortcut icon" href="../qgi/images/favicon.png">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/languages.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Google tracking script-->
+    <script type="text/javascript" src="js/googleanalyticstracking.js"></script>
+    <!-- Jquery -->
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap Core JS -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- Custom js-->
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script>
+        $.cookie('language', 'en', { expires: 7, path: '/' });
+    </script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/questra-investment-plan-v1.js"></script>
+</head>
+<body>
+<div id="page" data-page="questra-investment-plan"></div>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img class="navbar-brand" src="../qgi/images/questra-logo-white.png">
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <!--<li><a class="questra-homepage-link" href="#"><span class="glyphicon glyphicon-globe"></span> Questra</a></li>-->
+                <!--<li><a class="questra-insurance-fund-link" href="#"><span class="glyphicon glyphicon-certificate"></span> Insurance fund</a></li>-->
+                <!--<li><a class="questra-packages-link" href="#"><span class="glyphicon glyphicon-grain"></span> Investment packages</a></li>-->
+                <li class="active"><a class="questra-investment-plan-link" href="#"><span class="glyphicon glyphicon-list-alt"></span> Investment plan</a></li>
+                <!--<li class="dropdown">-->
+                    <!--<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-road"></span> Hướng dẫn</a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a class="questra-instruction-link" href="#"> Instruction</a></li>-->
+                        <!--<li><a href="https://drive.google.com/drive/folders/0B0Zq3BT1yhTnbXpJVUtWME9zaVU" target="_blank"> Download</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li><a class="register-link" href="https://private.atlanticgam.es/#/sign-up/partner=P09201496814793" target="_blank"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span id="questra-current-language" class="lang-sm lang-lbl"></span>
+                    </a>
+                    <ul id="questra-language-list" class="dropdown-menu"></ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <!--<div class="row">-->
+        <!--<div class="col-md-12" style="margin: 5px 0; font-weight: bold; color: #fc3027;">-->
+            <!--Updated: Japanese, formula-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="panel-group">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <p class="panel-title">Please enter the starting amount or the number of packages you want to invest</p>
+            </div>
+            <div class="panel-body" style="padding-bottom: 0;">
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label class="control-label">Total amount of investment</label>
+                        <input class="form-control"
+                               data-content="Enter the amount you want to invest. The system will automatically divide your money into the best investment packages."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="startInvest" name="QuestraSettings.Startinvest" title=""
+                               type="number" min="0" value="0" data-original-title="Total amount of investment">
+                    </div>
+                    <div id="remain" class="col-md-2 form-group hide">
+                        <h3><label class="label label-warning">Remain : &euro; <span id="remain_number"></span></label></h3>
+                    </div>
+                    <div id="redo" class="col-md-2 form-group" style="text-align: center; margin-top: 13px;">
+                        <a id="redo_button" class="btn btn-primary btn-lg" role="button" title="Redo">Redo</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <img src="images/white-package.png" class="img-rounded" alt="Questra white package" width="30" height="30"
+                             style="margin: 5px; vertical-align: middle;">
+                        <label class="control-label" for="num-of-white-package"
+                               style="vertical-align: middle; max-width: calc(100% - 44px); margin-bottom: 0;">White package (&euro; 90)</label>
+                        <input class="form-control package"
+                               data-content="Enter the amount of white package which you want to invest. (Commission 39%)."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="num-of-white-package" type="number" min="0" value="0"
+                               data-original-title="White package - &euro; 90">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <img src="images/yellow-package.png" class="img-rounded" alt="Questra yellow package" width="30" height="30"
+                             style="margin: 5px; vertical-align: middle;">
+                        <label class="control-label" for="num-of-yellow-package"
+                               style="vertical-align: middle; max-width: calc(100% - 44px); margin-bottom: 0;">Yellow package (&euro; 270)</label>
+                        <input class="form-control package"
+                               data-content="Enter the amount of yellow package which you want to invest. (Commission 36%)."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="num-of-yellow-package" type="number" min="0" value="0"
+                               data-original-title="Yellow package - &euro; 270">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <img src="images/green-package.png" class="img-rounded" alt="Questra green package" width="30" height="30"
+                             style="margin: 5px; vertical-align: middle;">
+                        <label class="control-label" for="num-of-green-package"
+                               style="vertical-align: middle; max-width: calc(100% - 44px); margin-bottom: 0;">Green package (&euro; 810)</label>
+                        <input class="form-control package"
+                               data-content="Enter the amount of green package which you want to invest. (Commission 30%)."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="num-of-green-package" type="number" min="0" value="0"
+                               data-original-title="Green package - &euro; 810">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <img src="images/blue-package.png" class="img-rounded" alt="Questra blue package" width="30" height="30"
+                             style="margin: 5px; vertical-align: middle;">
+                        <label class="control-label" for="num-of-blue-package"
+                               style="vertical-align: middle; max-width: calc(100% - 44px); margin-bottom: 0;">Blue package (&euro; 2.430)</label>
+                        <input class="form-control package"
+                               data-content="Enter the amount of blue package which you want to invest. (Commission 24%)."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="num-of-blue-package" type="number" min="0" value="0"
+                               data-original-title="Blue package - &euro; 2.430">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <img src="images/red-package.png" class="img-rounded" alt="Questra red package" width="30" height="30"
+                             style="margin: 5px; vertical-align: middle;">
+                        <label class="control-label" for="num-of-red-package"
+                               style="vertical-align: middle; max-width: calc(100% - 44px); margin-bottom: 0;">Red package (&euro; 7.290)</label>
+                        <input class="form-control package"
+                               data-content="Enter the amount of red package which you want to invest. (Commission 21%)."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="num-of-red-package" type="number" min="0" value="0"
+                               data-original-title="Red package - &euro; 7.290">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <img src="images/black-package.png" class="img-rounded" alt="Questra black package" width="30" height="30"
+                             style="margin: 5px; vertical-align: middle;">
+                        <label class="control-label" for="num-of-black-package"
+                               style="vertical-align: middle; max-width: calc(100% - 44px); margin-bottom: 0;">Black package (&euro; 21.870)</label>
+                        <input class="form-control package"
+                               data-content="Enter the amount of black package which you want to invest. (Commission 10%)."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="num-of-black-package" type="number" min="0" value="0"
+                               data-original-title="Black package - &euro; 21.870">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <img src="images/indigo-package.png" class="img-rounded" alt="Questra indigo package" width="30" height="30"
+                             style="margin: 5px; vertical-align: middle;">
+                        <label class="control-label" for="num-of-indigo-package"
+                               style="vertical-align: middle; max-width: calc(100% - 44px); margin-bottom: 0;">Indigo package (&euro; 65.610)</label>
+                        <input class="form-control package"
+                               data-content="Enter the amount of indigo package which you want to invest. (Commission 7%)."
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus"
+                               id="num-of-indigo-package" type="number" min="0" value="0"
+                               data-original-title="Indigo package - &euro; 65.610">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <p class="panel-title">Select your investment plan</p>
+            </div>
+            <div class="panel-body" style="padding-bottom: 0;">
+                <div class="row">
+                    <div class="col-md-12 form-group" style="margin-bottom: 15px;">
+                        <div class="questra-radio" style="margin-right: 10px;"
+                             data-content="Manual plan."
+                             data-placement="bottom" data-toggle="popover" data-trigger="hover">
+                            <input type="radio" name="questra-invest-plan" id="questra-invest-manual-plan" checked/>
+                            <label for="questra-invest-manual-plan" style="margin-bottom: 0; margin-top: 5px;">Manual plan</label>
+                        </div>
+                        <div class="questra-radio" style="margin-right: 10px;"
+                             data-content="Reinvest all weekly profit."
+                             data-placement="bottom" data-toggle="popover" data-trigger="hover">
+                            <input type="radio" name="questra-invest-plan" id="questra-invest-plan-A"/>
+                            <label for="questra-invest-plan-A" style="margin-bottom: 0; margin-top: 5px;">Plan A</label>
+                        </div>
+                        <div class="questra-radio" style="margin-right: 10px;"
+                             data-content="Withdraw 100% profit every week until payback then reinvested."
+                             data-placement="bottom" data-toggle="popover" data-trigger="hover">
+                            <input type="radio" name="questra-invest-plan" id="questra-invest-plan-B"/>
+                            <label for="questra-invest-plan-B" style="margin-bottom: 0; margin-top: 5px;">Plan B</label>
+                        </div>
+                        <div class="questra-radio" style="margin-right: 10px;"
+                             data-content="Withdraw weekly half profit, reinvesting the other half."
+                             data-placement="bottom" data-toggle="popover" data-trigger="hover">
+                            <input type="radio" name="questra-invest-plan" id="questra-invest-plan-C"/>
+                            <label for="questra-invest-plan-C" style="margin-bottom: 0; margin-top: 5px;">Plan C</label>
+                        </div>
+                        <div class="questra-radio"
+                             data-content="Reinvesting all weekly profit half cycle, then withdraw weekly income."
+                             data-placement="bottom" data-toggle="popover" data-trigger="hover">
+                            <input type="radio" name="questra-invest-plan" id="questra-invest-plan-D"/>
+                            <label for="questra-invest-plan-D" style="margin-bottom: 0; margin-top: 5px;">Plan D</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 form-group">
+                        <div class="questra-checkbox"
+                             data-content="Insurance 10%"
+                             data-placement="bottom" data-toggle="popover" data-trigger="hover">
+                            <input type="checkbox" id="questra-insurance" checked/>
+                            <label for="questra-insurance" style="margin-bottom: 0; margin-top: 5px;">Insurance</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 form-group">
+                        <a id="instruction">
+                            <img src="images/question-mark.png" class="img-rounded" alt="instruction" width="30" height="30" style="margin: 5px;">
+                            <label>Show formula</label>
+                        </a>
+                    </div>
+                    <div id="formula" class="col-md-10 hide">
+                        <p>Weekly income formula:<br>[package price] * [average profit] * (1 - commission - insurance)</p>
+                        <p>Average profit last 10 weeks: 0.06</p>
+                        <p>Example: Blue package (2430):</p>
+                        <p>Insurance:<br> 2430 * 0.06 * (1 - 0.24 - 0.1) = 96.228</p>
+                        <p>Without insurance:<br> 2430 * 0.06 * (1 - 0.24) = 110.808</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <img src="images/calendar.png" class="img-rounded" width="30" height="30" style="margin: 5px;">
+                        <label class="control-label" for="num-of-week">Number of weeks</label>
+                        <input class="form-control" data-content="Enter number of weeks you want to calculate"
+                               data-placement="bottom" data-toggle="popover" data-trigger="focus" id="num-of-week"
+                               type="number" min="0" value="52" data-original-title="Number of weeks">
+                    </div>
+                </div>
+                <div class="row" id="questra-manual-plan">
+                    <div class="col-md-4 form-group">
+                        <img src="images/money-withdraw.png" class="img-rounded" width="30" height="30"
+                             style="margin: 5px;">
+                        <label class="control-label" for="weeklyWithdrawAmount">Weekly withdraw</label>
+                        <input class="form-control" data-content="Enter the amount you need to withdraw weekly" data-placement="bottom"
+                               data-toggle="popover" data-trigger="focus" id="weeklyWithdrawAmount" type="number"
+                               min="0" value="0" data-original-title="Weekly withdraw">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <img src="images/calendar.png" class="img-rounded" width="30" height="30" style="margin: 5px;">
+                        <label class="control-label" for="fromWeek">From week</label>
+                        <input class="form-control" data-content="Week you begin withdraw" data-placement="bottom"
+                               data-toggle="popover" data-trigger="focus" id="fromWeek" type="number" min="0" value="1"
+                               data-original-title="From week">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <img src="images/calendar.png" class="img-rounded" width="30" height="30" style="margin: 5px;">
+                        <label class="control-label" for="toWeek">To week</label>
+                        <input class="form-control" data-content="Week you stop withdraw" data-placement="bottom"
+                               data-toggle="popover" data-trigger="focus" id="toWeek" type="number" min="0" value="52"
+                               data-original-title="To week">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group" style="text-align: center;">
+                        <a id="calculate_button" class="btn btn-info btn-lg" role="button" title="Calculate">Calculate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-hover hide" id="table_result" style="margin-bottom: 10px;">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Date</th>
+                            <th id="questra-packagesColumn"></th>
+                            <th>Weekly profit</th>
+                            <th>Account</th>
+                            <th>Invest</th>
+                            <th>Withdraw</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="summary_row" class="row hide">
+        <div id="summary" class="col-md-12">
+            <h3>Summary</h3>
+            <p>Starting amount of investment : <b><span id="summary_startInvest"></span></b></p>
+            <p><b>After <span id="summary_numOfWeek"></span> weeks :</b></p>
+            <ul style='list-style-type: disc; padding-left: 20px;'>
+                <li>
+                    <p style='margin-bottom: 5px;'>Total invest : <b>~ <span id="summary_moneyInvested"></span></b></p>
+                </li>
+                <li>
+                    <p style='margin-bottom: 5px;'>Active packages : <span id="summary_numOfActivePackages"></span></p>
+                </li>
+                <li>
+                    <p style='margin-bottom: 5px;'>Weekly income from <span id="summary_nextWeek"></span><sup>th</sup> week  : <b>~ <span id="summary_income"></span></b></p>
+                </li>
+                <li id="summary_withdraw">
+                    <p style='margin-bottom: 5px;'>Total money withdrew : <b><span id="summary_totalWithdraw"></span></b> from week <span id="summary_fromWeek"></span> to week <span id="summary_toWeek"></span></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="navbar">
+    <div class="container">
+        <div class="row" style="text-align: center;">
+            <img src="images/agam-logo.png" style="height: 60px;">
+            <a href="https://private.atlanticgam.es/#/sign-up/partner=P09201496814793" target="_blank"
+               class="btn btn-success btn-lg register-link" role="button" title="More information" style="margin: 32px 0;">
+                <span class="text">More information »</span>
+            </a>
+            <a href="https://private.questraworld.es/#/login" target="_blank">
+                <img src="images/questra-world-logo-red.png" style="height: 60px;">
+            </a>
+        </div>
+    </div>
+</div>
+</body>

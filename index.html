@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Questra - India</title>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Know about Questra Investments and Calculate questra returns and income" />
+        <meta name="author" content="Questra India" />
+        <meta property="og:title" content="Questra India Info and Income Calculator" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://questraglobal.info/" />
+        <meta property="og:image" content="http://questraglobal.info/images/questra-holding-logo-red.png" />
+        <meta property="og:site_name" content="Questra India -Info and Income Calculator" />
+        <meta property="og:description" content="Learn about Questra Investments and Calculate your Income and returns from Questra" />
+        <link rel="shortcut icon" href="../qgi/images/favicon.png">
+
+        <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-amber.min.css"/>
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+        
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <!-- Google tracking script-->
+        <script type="text/javascript" src="js/googleanalyticstracking.js"></script>
+        <!-- Jquery -->
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <!-- Bootstrap Core JS -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- Custom js-->
+        <script type="text/javascript" src="js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/currency.js"></script>
+        <script>
+            $.cookie('language', 'en', { expires: 7, path: '/' });
+        </script>
+        <script type="text/javascript" src="js/navigation.js"></script>
+        <script type="text/javascript" src="js/calculate.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <!-- <div id="page" data-page="questra-investment-plan"></div> -->
+        <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">
+              <img class="main-logo" src="/qgi/images/questra-logo-white.png"/>
+          </span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="">About</a>
+            <a class="mdl-navigation__link" href="">Contact</a>
+            <a class="mdl-navigation__link" href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496">Register</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <img class="side-logo" src="/qgi/images/side-logo.png"/>
+        <span class="mdl-layout-title">
+        </span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="">About</a>
+            <a class="mdl-navigation__link" href="">Contact</a>
+            <a class="mdl-navigation__link" href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496">Register</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+            <!-- Your content goes here -->
+          <div class="main-content">
+            <div class="mdl-grid mdl-cell--12-col">
+                <div class="mdl-cell--12-col card-margin mdl-shadow--4dp">
+                    <h3 class="heading_text">Questra Investment & Returns Calculator</h3>
+                </div>
+                <div class="mdl-cell--4-col text_center card-margin mdl-shadow--4dp" >
+                    <div><h5>Total Investment</h5></div>
+                    <div class="input_container qo-input">
+                       &euro; <input class="q-input"  id="startInvest" name="QuestraSettings.Startinvest" title="" type="number" min="0" value="0"/>
+                    </div>
+                     <div id="remain" class="form-group hide">
+                        <p><label class="label label-warning">Remain : &euro; <span id="remain_number"></span></label></p>
+                    </div>
+                    <form>
+                    <div class=" mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                        <!-- <label class="mdl-selectfield__label" for="professsion2">Select Currency</label> -->
+                        <select class="QN_select mdl-selectfield__select" id="sc" name="professsion">
+                          <option value="">Select Currency</option>
+                          <option value="option1">INR</option>
+                          <option value="option2">USD</option>
+                          <option value="option3">GBP</option>
+                        </select>
+                    </div>
+                    </form>
+
+                    <div class="input_container qo-input">
+                        &#8377; <input class="q-input"  id="view_rupees" title="" type="number" min="0" />
+                    </div>
+                    <div class="input_container qo-input">
+                        &dollar;<input class="q-input"  id="view_dollars" name="QuestraSettings.Startinvest" title="" type="number" min="0" value="0"/>
+                    </div>
+
+                    <div style="display:flex; padding:20px">
+                        <div style="width:70%;">
+                            Show Week Table
+                        </div>
+                        <div style="width:30%;">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="table_view">
+                              <input type="checkbox" id="table_view" class="mdl-switch__input" checked></input>
+                              <span class="mdl-switch__label"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; padding:20px">
+                        <div style="width:70%;">
+                            Show Year End Table
+                        </div>
+                        <div style="width:30%;">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="table_year">
+                              <input type="checkbox" id="table_year" class="mdl-switch__input" checked></input>
+                              <span class="mdl-switch__label"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mdl-cell--4-col mdl-shadow--4dp card-margin" >
+                    <table class="mdl-data-table mdl-js-data-table">
+                        <thead>
+                          <tr>
+                            <th class="mdl-data-table__cell--non-numeric">Questra </th>
+                            <th>Packages</th>
+                            <th>Number of Packages</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <img class="img-pkg" src="images/white-package.png"> 
+                            </td>
+                            <td>
+                                <span class="span_disp"><b>White</b></span>
+                                <span class="span_disp">&euro; 90</span>
+                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                            </td>
+                            <td><input id="num-of-white-package"  class="QN_input package" type="number" min="0" value="0"></td>
+                          </tr>
+                          <tr>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <img class="img-pkg" src="images/yellow-package.png"> 
+                            </td>
+                            <td>
+                                <span class="span_disp"><b>Yellow</b></span>
+                                <span class="span_disp">&euro; 270</span>
+                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                            </td>
+                            <td><input id="num-of-yellow-package" class="QN_input package" type="number" min="0" value="0"></td>
+                          </tr>
+                          <tr>
+                            <td class="mdl-data-table__cell--non-numeric">
+                                <img class="img-pkg" src="images/green-package.png"> 
+                            </td>
+                            <td>
+                                <span class="span_disp"><b>Green</b></span>
+                                <span class="span_disp">&euro; 810</span>
+                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                            </td>
+                            <td><input id="num-of-green-package" class="QN_input package" type="number" min="0" value="0"></td>
+                          </tr>
+                        <tr>
+                             <td class="mdl-data-table__cell--non-numeric">
+                                <img  class="img-pkg" src="images/blue-package.png"> 
+                            </td>
+                            <td>
+                                <span class="span_disp"><b>Blue</b></span>
+                                <span class="span_disp">&euro; 2,430</span>
+                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                            </td>
+                            <td><input id="num-of-blue-package" class="QN_input package" type="number" min="0" value="0"></td>
+                          </tr>
+                        <tr>
+                             <td class="mdl-data-table__cell--non-numeric">
+                                <img class="img-pkg" src="images/red-package.png"> 
+                            </td>
+                            <td>
+                                <span class="span_disp"><b>Red</b></span>
+                                <span class="span_disp">&euro; 7,210</span>
+                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                            </td>
+                            <td><input id="num-of-red-package" class="QN_input package" type="number" min="0" value="0"></td>
+                          </tr>
+                        <tr>
+                             <td class="mdl-data-table__cell--non-numeric">
+                                <img class="img-pkg" src="images/black-package.png"> 
+                            </td>
+                            <td>
+                                <span class="span_disp"><b>Black</b></span>
+                                <span class="span_disp">&euro; 21,870</span>
+                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                            </td>
+                            <td><input id="num-of-black-package" class="QN_input package" type="number" min="0" value="0"></td>
+                          </tr>
+                        <tr>
+                             <td class="mdl-data-table__cell--non-numeric">
+                                <img class="img-pkg" src="images/indigo-package.png"> 
+                            </td>
+                            <td>
+                                <span class="span_disp"><b>Indigo</b></span>
+                                <span class="span_disp">&euro; 65,610</span>
+                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                            </td>
+                            <td><input id="num-of-indigo-package" class="QN_input package" type="number" min="0" value="0"></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mdl-cell--4-col card-margin mdl-shadow--4dp left-pad">
+                    <div class="text_center">
+                        <h5>Investment Plan</h5>
+                    </div>
+                    <div >
+                        <label class="mdl-radio mdl-js-radio" for="questra-invest-plan-A">
+                            <input type="radio" id="questra-invest-plan-A" name="questra-invest-plan" class="mdl-radio__button" checked>
+                            <span class="mdl-radio__label">Plan A</span>
+                        </label>
+                        <label class="mdl-radio mdl-js-radio" for="questra-invest-plan-B">
+                            <input type="radio" id="questra-invest-plan-B" name="questra-invest-plan" class="mdl-radio__button" >
+                            <span class="mdl-radio__label">Plan B</span>
+                        </label><br/>
+                        <label class="mdl-radio mdl-js-radio" for="questra-invest-plan-C">
+                            <input type="radio" id="questra-invest-plan-C" name="questra-invest-plan" class="mdl-radio__button" >
+                            <span class="mdl-radio__label">Plan C</span>
+                        </label>
+                         <label class="mdl-radio mdl-js-radio" for="questra-invest-plan-D">
+                            <input type="radio" id="questra-invest-plan-D" name="questra-invest-plan" class="mdl-radio__button" >
+                            <span class="mdl-radio__label">Plan D</span>
+                        </label><br/>
+                         <label class="mdl-radio mdl-js-radio" for="questra-invest-manual-plan">
+                            <input type="radio" id="questra-invest-manual-plan" name="questra-invest-plan" class="mdl-radio__button" >
+                            <span class="mdl-radio__label">Manual Plan</span>
+                        </label>
+                    </div>
+                    <div class="text_center">
+                        <h5>Select Insurance</h5>
+                    </div> 
+                    <div class="card-padding">
+                            <label class="mdl-checkbox mdl-js-checkbox" for="questra-insurance" style="margin-bottom: 0; margin-top: 5px;">
+                                <input class="mdl-checkbox__input" type="checkbox" id="questra-insurance" checked/>    
+                                <span style="padding:5px 20px 0 20px; display:block;" class="mdl-checkbox__label">Insurance</span>
+                            </label>
+                        </div>
+                         <div class="text_center">
+                        <h5>Number of Weeks</h5>
+                    </div>
+                     <div class="card-padding">
+                        <img src="images/calendar.png" class="img-rounded" width="30" height="30" style="margin: 5px;">
+                        <label class="" for="num-of-week">Number of weeks</label>
+                        <input class="QN_input" id="num-of-week"
+                               type="number" min="0" value="52" data-original-title="Number of weeks">
+                    </div>
+                    <div class="hide" id="questra-manual-plan">
+                     <div class="text_center">
+                        <h5>Manual Plan Entries</h5>
+                    </div>
+                     <div class="card-padding">
+                        <img src="images/money-withdraw.png" class="img-rounded" width="30" height="30"
+                             style="margin: 5px;">
+                        <label class="control-label" for="weeklyWithdrawAmount">Weekly withdraw</label>
+                        <input class="QN_input" id="weeklyWithdrawAmount" type="number"
+                               min="0" value="0" >
+                    </div>
+                    <div class="card-padding">
+                        <img src="images/calendar.png" class="img-rounded" width="30" height="30" style="margin: 5px;">
+                        <label class="control-label" for="fromWeek">From week</label>
+                        <input class="QN_input" id="fromWeek" type="number" min="0" value="1">
+                    </div>
+                    <div class="card-padding">
+                        <img src="images/calendar.png" class="img-rounded" width="30" height="30" style="margin: 5px;">
+                        <label class="control-label" for="toWeek">To week</label>
+                        <input class="QN_input" id="toWeek" type="number" min="0" value="52">
+                    </div>
+                </div>
+                </div>
+                <div class="mdl-cell--12-col card-margin card-padding" >
+                    <div class="" style="text-align: center;">
+                        <a id="calculate_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" role="button" title="Calculate">Calculate</a> &nbsp; &nbsp;
+                        <a id="redo_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" role="button" title="Reset">Reset</a>
+                    </div>
+                </div>
+
+                <div id="table_fullview" class="mdl-cell--12-col card-margin mdl-shadow--4dp">
+                    <div class="text_center">
+                        <div>
+                            <h5>Week Table</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="mdl-data-table table table-hover hide" id="table_result" style="margin-bottom: 10px;">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Week</th>
+                                        <th>Date</th>
+                                        <th id="questra-packagesColumn"></th>
+                                        <th>Weekly profit</th>
+                                        <th>Account</th>
+                                        <th>Invest</th>
+                                        <th>Withdraw</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="summary_table" class="mdl-cell--12-col card-margin mdl-shadow--4dp"> 
+                    <div>
+                        <h5 class="text_center">Year Table</h5>
+                    </div>
+                    <div class="table-responsive" >
+                        <table class="mdl-data-table table table-hover " id="Summary_table_result" style="margin-bottom: 10px;">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Week</th>
+                                        <th>Date</th>
+                                        <th>Weekly profit</th>
+                                        <th>Account</th>
+                                        <th>Invest</th>
+                                        <th>Withdraw</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                    </div>
+                    <p style="font-size:10px; ">*1 year = 52 weeks</p>
+                </div>
+                <div id="summary" class="mdl-cell--12-col card-margin mdl-shadow--4dp card-padding"> 
+                    <div>
+                        <h5 class="text_center">Summary</h5>
+                        <p>Initial amount of investment : <b><span id="summary_startInvest"></span></b></p>
+                        <p><b>After <span id="summary_numOfWeek"></span> weeks :</b></p>
+                        <ul style='list-style-type: disc; padding-left: 20px;'>
+                            <li>
+                                <p style='margin-bottom: 5px;'>Total invest : <b>~ <span id="summary_moneyInvested"></span></b></p>
+                            </li>
+                            <li>
+                                <p style='margin-bottom: 5px;'>Active packages : <span id="summary_numOfActivePackages"></span></p>
+                            </li>
+                            <li>
+                                <p style='margin-bottom: 5px;'>Weekly income from <span id="summary_nextWeek"></span><sup>th</sup> week  : <b>~ <span id="summary_income"></span></b></p>
+                            </li>
+                            <li id="summary_withdraw">
+                                <p style='margin-bottom: 5px;'>Total money withdrew : <b><span id="summary_totalWithdraw"></span></b> from week <span id="summary_fromWeek"></span> to week <span id="summary_toWeek"></span></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+     <a href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496" target="_blank" id="register" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Register</a>
+    </body>
+</html>
