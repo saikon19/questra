@@ -33,7 +33,7 @@ function currencyConverter(crate, currency_input){
 
 $(document).ready(function () {
 
-    $('#sc').val("USD");
+    // $('#sc').val("USD");
 
     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
     var x,y;
