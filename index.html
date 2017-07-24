@@ -13,7 +13,7 @@
         <meta property="og:image" content="http://questraglobal.info/images/questra-holding-logo-red.png" />
         <meta property="og:site_name" content="Questra India -Info and Income Calculator" />
         <meta property="og:description" content="Learn about Questra Investments and Calculate your Income and returns from Questra" />
-        <link rel="shortcut icon" href="../qgi/images/favicon.png">
+        <link rel="shortcut icon" href="images/favicon.png">
 
         <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 
@@ -53,9 +53,9 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="/">Home</a>
+            <a class="mdl-navigation__link" href="index.html">Home</a>
             <a class="mdl-navigation__link" href="">About</a>
-            <a class="mdl-navigation__link" href="">Contact</a>
+            <a class="mdl-navigation__link" href="contact.html">Contact</a>
             <a class="mdl-navigation__link" href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496">Register</a>
           </nav>
         </div>
@@ -90,20 +90,17 @@
                     <form>
                     <div class=" mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
                         <!-- <label class="mdl-selectfield__label" for="professsion2">Select Currency</label> -->
-                        <select class="QN_select mdl-selectfield__select" id="sc" name="professsion">
+                        <select class="QN_select mdl-selectfield__select" id="sc" name="sc">
                           <option value="">Select Currency</option>
-                          <option value="option1">INR</option>
-                          <option value="option2">USD</option>
-                          <option value="option3">GBP</option>
+                          <option value="INR">INR</option>
+                          <option value="USD">USD</option>
+                          <option value="GBP">GBP</option>
                         </select>
                     </div>
                     </form>
 
-                    <div class="input_container qo-input">
-                        &#8377; <input class="q-input"  id="view_rupees" title="" type="number" min="0" />
-                    </div>
-                    <div class="input_container qo-input">
-                        &dollar;<input class="q-input"  id="view_dollars" name="QuestraSettings.Startinvest" title="" type="number" min="0" value="0"/>
+                    <div class="input_currency">
+                        <label id="currency_label">N</label>
                     </div>
 
                     <div style="display:flex; padding:20px">
@@ -148,7 +145,7 @@
                             <td>
                                 <span class="span_disp"><b>White</b></span>
                                 <span class="span_disp">&euro; 90</span>
-                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                                <span class="span_disp"> <label id="whitelbl">N/A</label></span>
                             </td>
                             <td><input id="num-of-white-package"  class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -159,7 +156,7 @@
                             <td>
                                 <span class="span_disp"><b>Yellow</b></span>
                                 <span class="span_disp">&euro; 270</span>
-                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                                <span class="span_disp"><label id="yellowlbl">N/A</label></span>
                             </td>
                             <td><input id="num-of-yellow-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -170,7 +167,7 @@
                             <td>
                                 <span class="span_disp"><b>Green</b></span>
                                 <span class="span_disp">&euro; 810</span>
-                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                                <span class="span_disp"><label id="greenlbl">N/A</label></span>
                             </td>
                             <td><input id="num-of-green-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -181,7 +178,7 @@
                             <td>
                                 <span class="span_disp"><b>Blue</b></span>
                                 <span class="span_disp">&euro; 2,430</span>
-                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                                <span class="span_disp"><label id="bluelbl">N/A</label></span>
                             </td>
                             <td><input id="num-of-blue-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -192,7 +189,7 @@
                             <td>
                                 <span class="span_disp"><b>Red</b></span>
                                 <span class="span_disp">&euro; 7,210</span>
-                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                                <span class="span_disp"><label id="redlbl">N/A</label></span>
                             </td>
                             <td><input id="num-of-red-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -203,7 +200,7 @@
                             <td>
                                 <span class="span_disp"><b>Black</b></span>
                                 <span class="span_disp">&euro; 21,870</span>
-                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                                <span class="span_disp"><label id="blacklbl">N/A</label></span>
                             </td>
                             <td><input id="num-of-black-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -214,7 +211,7 @@
                             <td>
                                 <span class="span_disp"><b>Indigo</b></span>
                                 <span class="span_disp">&euro; 65,610</span>
-                                <span class="span_disp">&#8377; <label for="">N/A</label></span>
+                                <span class="span_disp"><label id="indigolbl">N/A</label></span>
                             </td>
                             <td><input id="num-of-indigo-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -366,7 +363,17 @@
             </div>
           </div>
         </div>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+              <div class="mdl-logo">Title</div>
+              <ul class="mdl-mini-footer__link-list">
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+              </ul>
+            </div>
+        </footer>
       </main>
+    
     </div>
      <a href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496" target="_blank" id="register" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Register</a>
     </body>

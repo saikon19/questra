@@ -35,6 +35,7 @@ $(document).ready(function () {
             $('#instruction label').html('Show formula');
         }
     });
+    
 
     $('#table_view').click(function(){
             if($(this).prop("checked") == true){
@@ -73,11 +74,11 @@ $(document).ready(function () {
         e = a.account;
         for (var t = 0; t < packages.length; t++)$("#num-of-" + packages[t] + "-package").val(r[t]);
         e > 0 ? ($('#remain_number').html(e), $('#remain').removeClass("hide")) : $("#remain").addClass("hide");
-
-            var currency_input= $(this).val();
-            var cur = currencyConverter(EUR_INR,currency_input);
-            console.log(cur);
-            $('#view_rupees').html(cur);
+        
+            // var currency_input= $(this).val();
+            // var cur = currencyConverter(EUR_INR,currency_input);
+            // console.log(cur);
+            // $('#view_rupees').html(cur);
             
     });
     $("#redo_button").on("click", function (e) {

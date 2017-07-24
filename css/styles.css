@@ -173,3 +173,15 @@ h5{
     margin-bottom: 40px;
     z-index: 900;
 }
+
+.input_currency{
+    margin:20px auto;
+}
+
+#currency_label{
+    font-size:24px;
+}
+
+.mdl-mini-footer{
+    background-color: rgb(211, 47, 47);
+}
