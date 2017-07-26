@@ -24,14 +24,13 @@
         
         <!-- <link href="css/style.css" rel="stylesheet"> -->
         <!-- Google tracking script-->
-        <script type="text/javascript" src="js/googleanalyticstracking.js"></script>
+        <!-- <script type="text/javascript" src="js/googleanalyticstracking.js"></script> -->
         <!-- Jquery -->
         <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
         <!-- Bootstrap Core JS -->
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <!-- Custom js-->
         <script type="text/javascript" src="js/jquery.cookie.js"></script>
-        <script type="text/javascript" src="js/currency.js"></script>
         <script>
             $.cookie('language', 'en', { expires: 7, path: '/' });
         </script>
@@ -77,7 +76,7 @@
           <div class="main-content">
             <div class="mdl-grid mdl-cell--12-col">
                 <div class="mdl-cell--12-col card-margin mdl-shadow--4dp">
-                    <h3 class="heading_text">Questra Investment & Returns Calculator</h3>
+                    <h3 class="heading_text">Questra Investments & Returns Calculator</h3>
                 </div>
                 <div class="mdl-cell--4-col text_center card-margin mdl-shadow--4dp" >
                     <div><h5>Total Investment</h5></div>
@@ -90,8 +89,8 @@
                     <form>
                     <div class=" mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
                         <!-- <label class="mdl-selectfield__label" for="professsion2">Select Currency</label> -->
-                        <select class="QN_select mdl-selectfield__select" id="sc" name="sc">
-                          <option value="" selected>Select Currency</option>
+                        <select class="QN_select mdl-selectfield__select required" id="sc" name="sc">
+                          <option value="INR" selected>Select Currency</option>
                           <option value="INR">INR</option>
                           <option value="USD">USD</option>
                           <option value="GBP">GBP</option>
@@ -100,7 +99,7 @@
                     </form>
 
                     <div class="input_currency">
-                        <label id="currency_label">N</label>
+                        <label id="currency_label">N/A</label>
                     </div>
 
                     <div style="display:flex; padding:20px">
@@ -142,7 +141,7 @@
                             <td class="mdl-data-table__cell--non-numeric">
                                 <img class="img-pkg" src="images/white-package.png"> 
                             </td>
-                            <td>
+                            <td style="width:100px">
                                 <span class="span_disp"><b>White</b></span>
                                 <span class="span_disp">&euro; 90</span>
                                 <span class="span_disp"> <label id="whitelbl">N/A</label></span>

@@ -11,7 +11,7 @@ h5{
 
 .main-content{
     margin: auto;
-    max-width: 950px;
+    max-width: 1000px;
 }
 .card-margin{
     margin: 7.5px;
@@ -124,11 +124,18 @@ h5{
     color: #000;
 }
 
+p {
+    padding: 0 12px;
+}
 
 .mdl-data-table{
     white-space: normal;
     border: 0 ;
     width: 100%;
+}
+
+.mdl-data-table th{
+    padding: 0 18px 12px 0;
 }
 
 .img-pkg{

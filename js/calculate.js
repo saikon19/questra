@@ -15,7 +15,111 @@ function getDateFormated(e) {
     return a + "/" + r + "/" + t
 }
 
+function httpGet(theUrl)
+{
+    var xmlHttp = null;
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+var currency_from = ""; 
+var currency_to = "";
+var currency_input = 0;
+
+function currencyRates(currency_from,currency_to){
+var yql_base_url = "https://query.yahooapis.com/v1/public/yql";
+var yql_query = 'select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20("'+currency_from+currency_to+'")';
+var yql_query_url = yql_base_url + "?q=" + yql_query + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+var http_response = httpGet(yql_query_url);
+var http_response_json = JSON.parse(http_response);
+//console.log(http_response);
+var rate = http_response_json.query.results.rate.Rate;
+return rate
+}
+
+
+function currencyConverter(crate, currency_input){
+    return crate * currency_input;
+}
+
+    var EUR_INR = currencyRates("EUR","INR");
+    var EUR_USD = currencyRates("EUR","USD");
+    var EUR_GBP = currencyRates("EUR","GBP");
+    var crate = 0;
+
 $(document).ready(function () {
+
+     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
+    var x = EUR_USD,y ="&dollar;";
+    var sc = document.getElementById('sc');
+        sc.addEventListener('change', function() {
+            x = selectCurrency(this.value);
+            y = selectCurrencySymbol(this.value);
+            // console.log(this.value);
+            changelbl(x,y);
+        // currencyConverter(crate,$('#startInvest').val());
+        
+    }, false);
+
+    function changelbl(x,y){
+        var con = x * $('#startInvest').val();
+        $("#currency_label").html(y + "&nbsp;" + Math.round(con));
+        for(var i=0; i<labels.length;i++){
+            $("#"+labels[i]+"").html(""+y+"&nbsp;"+Math.round(currencyConverter(x, prices[i]))+"");
+        }
+     }
+
+      function changeMainlbl(x,y){
+        var con = x * $('#startInvest').val();
+        $("#currency_label").html(y + "&nbsp;" + Math.round(con));
+     }
+
+    var sc_value;
+    function selectCurrency(sc_value){
+        switch(sc_value){
+            case "INR":
+                        crate = EUR_INR;
+                        break;
+            case "USD":
+                        crate = EUR_USD;
+                        break;
+            case "GBP":
+                        crate = EUR_GBP;
+                        break;
+            default :
+                        crate = 0;
+         }
+                    // console.log(crate);
+                    return crate;
+    }
+    var symbol="";
+    function selectCurrencySymbol(sc_value){
+        switch(sc_value){
+            case "INR":
+                        symbol = "&#8377;";
+                        break;
+            case "USD":
+                        symbol = "&dollar;";
+                        break;
+            case "GBP":
+                        symbol = "&pound;";
+                        break;
+            default :
+                        symbol = "&dollar;";
+         }
+                    // console.log(symbol);
+                    return symbol;
+    }
+
+    $("#startInvest").on("input", function () {
+        changeMainlbl(x,y);
+    });
+
+        changelbl(EUR_USD,"&dollar;");
+        changeMainlbl(x,y);
+
     $('[data-toggle="popover"]').popover();
     //$('.questra-radio').click(function(){
     //    $(this).popover('show');
@@ -192,7 +296,6 @@ $(document).ready(function () {
             //Setup Summary_table_result
             var str ="";
             var week_interval =(week/52);
-            console.log(week_interval);
             if(week_interval %1 == 0){
                 str = "<tr>"+
                 "<td>"+week+"</td>"+
@@ -275,10 +378,10 @@ $(document).ready(function () {
             $('#withdraw_amount_' + week + '').html("&euro; " + allow_withdraw_amount);
 
             if(week_interval % 1 == 0){
-                $('#week_profit_s' + week + '').html("&euro; " + week_profit);
-                $('#account_s' + week + '').html("&euro; " + account);
-                $('#money_invested_s' + week + '').html("&euro; " + money_invested);
-                $('#withdraw_amount_s' + week + '').html("&euro; " + allow_withdraw_amount);
+                $('#week_profit_s' + week + '').html("&euro; " + week_profit+"("+y+Math.round(x*week_profit)+")");
+                $('#account_s' + week + '').html("&euro; " + account +"("+y+Math.round(x*account)+")");
+                $('#money_invested_s' + week + '').html("&euro; " + money_invested +"("+y+Math.round(x*money_invested)+")");
+                $('#withdraw_amount_s' + week + '').html("&euro; " + allow_withdraw_amount +"("+y+Math.round(x*allow_withdraw_amount)+")");
             }
             date.setDate(date.getDate() + 7);
         }
@@ -286,9 +389,9 @@ $(document).ready(function () {
         // Summary
         total_withdraw = Math.round(total_withdraw * 100) / 100;
         var summary = $('#summary');
-        $('#summary_startInvest').html("&euro; " + $('#startInvest').val());
+        $('#summary_startInvest').html("&euro; " + $('#startInvest').val() +"("+y+Math.round(x*$('#startInvest').val())+")");
         $('#summary_numOfWeek').html(num_of_week);
-        $('#summary_moneyInvested').html("&euro; " + money_invested);
+        $('#summary_moneyInvested').html("&euro; " + money_invested +"("+y+Math.round(x*money_invested)+")" );
         var numOfPackagesSummary = "";
         for (var i = 0; i < numOfPackagesArr.length; i++) {
             if (numOfPackagesArr[i] > 0) {
@@ -300,10 +403,10 @@ $(document).ready(function () {
         $('#summary_nextWeek').html(num_of_week + 1);
         var summary_imcome = week_profit + allow_withdraw_amount;
         summary_imcome = Math.round(summary_imcome * 100) / 100;
-        $('#summary_income').html("&euro; " + summary_imcome);
+        $('#summary_income').html("&euro; " + summary_imcome +"("+y+Math.round(x*summary_imcome)+")");
         if (total_withdraw > 0) {
             $('#summary_withdraw').removeClass('hide');
-            $('#summary_totalWithdraw').html("&euro; " + total_withdraw);
+            $('#summary_totalWithdraw').html("&euro; " + total_withdraw +"("+y+Math.round(x*total_withdraw)+")");
             $('#summary_fromWeek').html(fromWeek);
             $('#summary_toWeek').html(toWeek);
         }else{
@@ -312,7 +415,6 @@ $(document).ready(function () {
         $('#summary_row').removeClass('hide');
         $('#summary').removeClass('hide');
 
-        
             if($('#table_view').prop("checked") == true){
                 $('#table_fullview').removeClass('hide');
             }
@@ -326,7 +428,6 @@ $(document).ready(function () {
             else if($('#table_year').prop("checked") == false){
                $('#summary_table').addClass('hide');
             }
-    
 
     });
     $('#summary_table').addClass('hide');
