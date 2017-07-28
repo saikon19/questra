@@ -2,7 +2,7 @@ var packages = ["white", "yellow", "green", "blue", "red", "black", "indigo"],
     prices = [90, 270, 810, 2430, 7290, 21870, 65610],
     commission = [.39, .36, .3, .24, .21, .1, .07],
     insurance = .1,
-    revenue = .053,
+    revenue = 0,
     profits = [];
 function account_to_packages(account) {
     for (var a = [], r = 0, t = prices.length - 1; t >= 0; t--)r = Math.floor(account / prices[t]), account -= prices[t] * r, a.push(r);
@@ -50,8 +50,12 @@ function currencyConverter(crate, currency_input){
     var crate = 0;
 
 $(document).ready(function () {
-
-     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
+    revenue = ($("#pro_id").val())/100;
+    $("#pro_id").on("input", function (){
+        revenue = ($("#pro_id").val())/100;
+    });
+    console.log(revenue);
+    var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
     var x = EUR_USD,y ="&dollar;";
     var sc = document.getElementById('sc');
         sc.addEventListener('change', function() {
@@ -69,6 +73,7 @@ $(document).ready(function () {
         for(var i=0; i<labels.length;i++){
             $("#"+labels[i]+"").html(""+y+"&nbsp;"+Math.round(currencyConverter(x, prices[i]))+"");
         }
+        $("#con_rates").html(y+"&nbsp;"+x);
      }
 
       function changeMainlbl(x,y){
@@ -433,4 +438,5 @@ $(document).ready(function () {
     $('#summary_table').addClass('hide');
     $('#table_fullview').addClass('hide');
     $('#summary').addClass('hide');
+    
 });
