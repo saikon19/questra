@@ -54,7 +54,7 @@ $(document).ready(function () {
     $("#pro_id").on("input", function (){
         revenue = ($("#pro_id").val())/100;
     });
-    console.log(revenue);
+    
     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
     var x = EUR_USD,y ="&dollar;";
     var sc = document.getElementById('sc');
