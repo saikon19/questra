@@ -192,3 +192,15 @@ p {
 .mdl-mini-footer{
     background-color: rgb(211, 47, 47);
 }
+
+.mdl-textfield__label:after {
+    background-color: rgb(3, 169, 244);
+}
+
+mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
+     background-color: rgb(3, 169, 244);
+}
+
+.mdl-textfield.is-invalid .mdl-textfield__input{
+    border-color: 1px solid rgba(0,0,0,.12);
+}
