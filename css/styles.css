@@ -4,9 +4,15 @@ h5{
 }
 
 .main-logo{
-    height: 50px;
-    /* width: 50px; */
-    margin:7px 0;
+    height: 40px;
+    margin:auto;
+}
+
+.main_heading{
+    font-size: 20px;
+    margin-left: 10px;
+    color: #767777 !important;
+    text-transform: uppercase;
 }
 
 .main-content{
@@ -135,7 +141,12 @@ p {
 }
 
 .mdl-data-table th{
-    padding: 0 18px 12px 0;
+    padding:  6px;
+     text-align: left;
+}
+.mdl-data-table td {
+    padding: 6px;
+    text-align: left;
 }
 
 .img-pkg{
@@ -190,7 +201,7 @@ p {
 }
 
 .mdl-mini-footer{
-    background-color: rgb(211, 47, 47);
+    background-color: rgb(244, 67, 54);
 }
 
 .mdl-textfield__label:after {
@@ -203,4 +214,32 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 
 .mdl-textfield.is-invalid .mdl-textfield__input{
     border-color: 1px solid rgba(0,0,0,.12);
+}
+
+.questra_header{
+    background-color: white;
+    color: black;
+}
+
+.questra_header .material-icons {
+    color: #767777 !important;
+}
+
+.questra_header a {
+    color: #767777 !important;
+}
+
+.footer{
+    height: 30px;
+    width: 100%;
+    background-color: rgb(211, 47, 47); 
+}
+
+#calculate_button{
+    background-color: rgb(139, 195, 74);
+}
+
+#redo_button{
+    background-color: rgb(244,67,54);
+    color: white;
 }

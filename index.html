@@ -43,12 +43,13 @@
         <!-- <div id="page" data-page="questra-investment-plan"></div> -->
         <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
+      <header class="mdl-layout__header questra_header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
           <span class="mdl-layout-title">
-              <img class="main-logo" src="images/questra-logo-white.png"/>
+              <img class="main-logo" src="images/questra_logo.png"/>
           </span>
+            <!-- <span><h3 class="main_heading"> Calculator</h3></span> -->
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
@@ -76,9 +77,9 @@
             <!-- Your content goes here -->
           <div class="main-content">
             <div class="mdl-grid mdl-cell--12-col">
-                <div class="mdl-cell--12-col card-margin mdl-shadow--4dp">
+                <!-- <div class="mdl-cell--12-col card-margin mdl-shadow--4dp">
                     <h3 class="heading_text">Questra Investments & Returns Calculator</h3>
-                </div>
+                </div> -->
                 <div class="mdl-cell--4-col text_center card-margin mdl-shadow--4dp" >
                     <div><h5>Total Investment</h5></div>
                     
@@ -128,17 +129,17 @@
                         </div>
                     </div>
                     <p style="font-size:12px">Info: Current Conversion Rates:1 &euro; = <label id="con_rates">N/A</label></p> 
-                    <div style="padding-bottom:50px">
-                        Profit Percentage: <input class="QN_input" min="0" value="5.3" id="pro_id"/></input>
+                    <div style="padding-bottom:20px;font-size:20px">
+                        Profit %: <input class="QN_input" style="font-size:20px" type="number" min="0" value="5.3" id="pro_id"/></input>
                     </div>
                 </div>
                 <div class="mdl-cell--4-col mdl-shadow--4dp card-margin" >
                     <table class="mdl-data-table mdl-js-data-table">
                         <thead>
                           <tr>
-                            <th class="mdl-data-table__cell--non-numeric">Questra </th>
-                            <th>Packages</th>
-                            <th>Number of Packages</th>
+                            <th class="mdl-data-table__cell--non-numeric" style="width:70px">Questra </th>
+                            <th style="width:100%">Packages</th>
+                            <th style="width:70px">Number</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -148,8 +149,8 @@
                             </td>
                             <td style="width:100px">
                                 <span class="span_disp"><b>White</b></span>
-                                <span class="span_disp">&euro; 90</span>
-                                <span class="span_disp"> <label id="whitelbl">N/A</label></span>
+                                <span class="">&euro; 90</span>
+                                <span class=""> (<label id="whitelbl">N/A</label>)</span>
                             </td>
                             <td><input id="num-of-white-package"  class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -159,8 +160,8 @@
                             </td>
                             <td>
                                 <span class="span_disp"><b>Yellow</b></span>
-                                <span class="span_disp">&euro; 270</span>
-                                <span class="span_disp"><label id="yellowlbl">N/A</label></span>
+                                <span class="">&euro; 270</span>
+                                <span class="">(<label id="yellowlbl">N/A</label>)</span>
                             </td>
                             <td><input id="num-of-yellow-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -170,8 +171,8 @@
                             </td>
                             <td>
                                 <span class="span_disp"><b>Green</b></span>
-                                <span class="span_disp">&euro; 810</span>
-                                <span class="span_disp"><label id="greenlbl">N/A</label></span>
+                                <span class="">&euro; 810</span>
+                                <span class="">(<label id="greenlbl">N/A</label>)</span>
                             </td>
                             <td><input id="num-of-green-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -181,8 +182,8 @@
                             </td>
                             <td>
                                 <span class="span_disp"><b>Blue</b></span>
-                                <span class="span_disp">&euro; 2,430</span>
-                                <span class="span_disp"><label id="bluelbl">N/A</label></span>
+                                <span class="">&euro; 2,430</span>
+                                <span class="">(<label id="bluelbl">N/A</label>)</span>
                             </td>
                             <td><input id="num-of-blue-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -192,8 +193,8 @@
                             </td>
                             <td>
                                 <span class="span_disp"><b>Red</b></span>
-                                <span class="span_disp">&euro; 7,210</span>
-                                <span class="span_disp"><label id="redlbl">N/A</label></span>
+                                <span class="">&euro; 7,210</span>
+                                <span class="">(<label id="redlbl">N/A</label>)</span>
                             </td>
                             <td><input id="num-of-red-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -203,8 +204,8 @@
                             </td>
                             <td>
                                 <span class="span_disp"><b>Black</b></span>
-                                <span class="span_disp">&euro; 21,870</span>
-                                <span class="span_disp"><label id="blacklbl">N/A</label></span>
+                                <span class="">&euro; 21,870</span>
+                                <span class="">(<label id="blacklbl">N/A</label>)</span>
                             </td>
                             <td><input id="num-of-black-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -214,8 +215,8 @@
                             </td>
                             <td>
                                 <span class="span_disp"><b>Indigo</b></span>
-                                <span class="span_disp">&euro; 65,610</span>
-                                <span class="span_disp"><label id="indigolbl">N/A</label></span>
+                                <span class="">&euro; 65,610</span>
+                                <span class="">(<label id="indigolbl">N/A</label>)</span>
                             </td>
                             <td><input id="num-of-indigo-package" class="QN_input package" type="number" min="0" value="0"></td>
                           </tr>
@@ -291,7 +292,7 @@
                 </div>
                 <div class="mdl-cell--12-col card-margin card-padding" >
                     <div class="" style="text-align: center;">
-                        <a id="calculate_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" role="button" title="Calculate">Calculate</a> &nbsp; &nbsp;
+                        <a id="calculate_button"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" role="button" title="Calculate">Calculate</a> &nbsp; &nbsp;
                         <a id="redo_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" role="button" title="Reset">Reset</a>
                     </div>
                 </div>
@@ -376,6 +377,9 @@
               </ul>
             </div>
         </footer>
+        <div class="footer">
+
+        </div>
       </main>
     
     </div>
