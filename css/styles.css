@@ -190,6 +190,7 @@ p {
     margin-right: 40px;
     margin-bottom: 40px;
     z-index: 900;
+    background-color: rgb(205, 220, 57);
 }
 
 .input_currency{
@@ -233,6 +234,9 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
     height: 30px;
     width: 100%;
     background-color: rgb(211, 47, 47); 
+    font-size: 12px;
+    text-align: center;
+    color: white
 }
 
 #calculate_button{
@@ -242,4 +246,18 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 #redo_button{
     background-color: rgb(244,67,54);
     color: white;
+}
+
+.mdl-tooltip p{
+    font-size:10px;
+    margin: 0px;
+    line-height: 16px;
+    padding: 0px;
+}
+
+.mdl-tooltip b{
+    text-transform: uppercase;
+    margin: 0px;
+    line-height: 16px;
+    padding: 0px;
 }

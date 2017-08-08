@@ -62,7 +62,7 @@
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <img class="side-logo" src="images/side-logo.png"/>
+        <img style="height: 200px;" class="side-logo" src="images/side-logo.png"/>
         <span class="mdl-layout-title">
         </span>
         <nav class="mdl-navigation">
@@ -85,6 +85,10 @@
                     
                     <div class="input_container qo-input">
                        &euro; <input class="q-input"  id="startInvest" name="QuestraSettings.Startinvest" title="" type="number" min="0" value="0"/>
+                        <div class="mdl-tooltip" for="startInvest">
+                            <b>Total Amount of Investment</b>
+                            <p class="tt_para">Enter the amount you want to invest. The system will automatically divide your money into the best investment packages.</p>
+                        </div>
                     </div>
                      <div id="remain" class="form-group hide">
                         <p><label class="label label-warning">Remain : &euro; <span id="remain_number"></span></label></p>
@@ -152,7 +156,13 @@
                                 <span class="">&euro; 90</span>
                                 <span class=""> (<label id="whitelbl">N/A</label>)</span>
                             </td>
-                            <td><input id="num-of-white-package"  class="QN_input package" type="number" min="0" value="0"></td>
+                            <td>
+                                <input id="num-of-white-package"  class="QN_input package" type="number" min="0" value="0">
+                                <div class="mdl-tooltip" for="num-of-white-package">
+                                    <b>White package - &euro; 90</b>
+                                    <p>Enter the amount of white package which you want to invest. (Commission 39%).</p>
+                                </div>
+                            </td>
                           </tr>
                           <tr>
                             <td class="mdl-data-table__cell--non-numeric">
@@ -163,7 +173,13 @@
                                 <span class="">&euro; 270</span>
                                 <span class="">(<label id="yellowlbl">N/A</label>)</span>
                             </td>
-                            <td><input id="num-of-yellow-package" class="QN_input package" type="number" min="0" value="0"></td>
+                            <td>
+                                <input id="num-of-yellow-package" class="QN_input package" type="number" min="0" value="0">
+                                <div class="mdl-tooltip" for="num-of-yellow-package">
+                                    <b>Yellow package (&euro; 270)</b>
+                                    <p>Enter the amount of yellow package which you want to invest. (Commission 36%).</p>
+                                </div>
+                            </td>
                           </tr>
                           <tr>
                             <td class="mdl-data-table__cell--non-numeric">
@@ -174,7 +190,13 @@
                                 <span class="">&euro; 810</span>
                                 <span class="">(<label id="greenlbl">N/A</label>)</span>
                             </td>
-                            <td><input id="num-of-green-package" class="QN_input package" type="number" min="0" value="0"></td>
+                            <td>
+                                <input id="num-of-green-package" class="QN_input package" type="number" min="0" value="0">
+                                <div class="mdl-tooltip" for="num-of-green-package">
+                                    <b>Green package (&euro; 810)</b>
+                                    <p>Enter the amount of green package which you want to invest. (Commission 30%).</p>
+                                </div>
+                            </td>
                           </tr>
                         <tr>
                              <td class="mdl-data-table__cell--non-numeric">
@@ -185,7 +207,13 @@
                                 <span class="">&euro; 2,430</span>
                                 <span class="">(<label id="bluelbl">N/A</label>)</span>
                             </td>
-                            <td><input id="num-of-blue-package" class="QN_input package" type="number" min="0" value="0"></td>
+                            <td>
+                                <input id="num-of-blue-package" class="QN_input package" type="number" min="0" value="0">
+                                 <div class="mdl-tooltip" for="num-of-blue-package">
+                                    <b>Blue package (&euro; 2,430)</b>
+                                    <p>Enter the amount of blue package which you want to invest. (Commission 24%).</p>
+                                </div>
+                            </td>
                           </tr>
                         <tr>
                              <td class="mdl-data-table__cell--non-numeric">
@@ -196,7 +224,13 @@
                                 <span class="">&euro; 7,210</span>
                                 <span class="">(<label id="redlbl">N/A</label>)</span>
                             </td>
-                            <td><input id="num-of-red-package" class="QN_input package" type="number" min="0" value="0"></td>
+                            <td>
+                                <input id="num-of-red-package" class="QN_input package" type="number" min="0" value="0">
+                                <div class="mdl-tooltip" for="num-of-red-package">
+                                    <b>Red package (&euro; 7,210)</b>
+                                    <p>Enter the amount of red package which you want to invest. (Commission 21%).</p>
+                                </div>
+                            </td>
                           </tr>
                         <tr>
                              <td class="mdl-data-table__cell--non-numeric">
@@ -207,7 +241,13 @@
                                 <span class="">&euro; 21,870</span>
                                 <span class="">(<label id="blacklbl">N/A</label>)</span>
                             </td>
-                            <td><input id="num-of-black-package" class="QN_input package" type="number" min="0" value="0"></td>
+                            <td>
+                                <input id="num-of-black-package" class="QN_input package" type="number" min="0" value="0">
+                                <div class="mdl-tooltip" for="num-of-black-package">
+                                    <b>Black package (&euro; 7,210)</b>
+                                    <p>Enter the amount of black package which you want to invest. (Commission 10%).</p>
+                                </div>
+                            </td>
                           </tr>
                         <tr>
                              <td class="mdl-data-table__cell--non-numeric">
@@ -218,7 +258,13 @@
                                 <span class="">&euro; 65,610</span>
                                 <span class="">(<label id="indigolbl">N/A</label>)</span>
                             </td>
-                            <td><input id="num-of-indigo-package" class="QN_input package" type="number" min="0" value="0"></td>
+                            <td>
+                                <input id="num-of-indigo-package" class="QN_input package" type="number" min="0" value="0">
+                                <div class="mdl-tooltip" for="num-of-indigo-package">
+                                    <b>Indigo package (&euro; 7,210)</b>
+                                    <p>Enter the amount of indigo package which you want to invest. (Commission 7%).</p>
+                                </div>
+                            </td>
                           </tr>
                         </tbody>
                     </table>
@@ -378,7 +424,7 @@
             </div>
         </footer>
         <div class="footer">
-
+               <p style="padding:3px 0; margin-bottom:0px">Questra India Group</p> 
         </div>
       </main>
     
