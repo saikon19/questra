@@ -206,9 +206,10 @@ $(document).ready(function () {
     });
     $("input[name='questra-invest-plan']").change(function(e){
         if($(this).attr('id') == 'questra-invest-manual-plan') {
-            $('#questra-manual-plan').removeClass('hide');
+            $('#questra-manual-plan').removeClass('disabled');
         } else {
-            $('#questra-manual-plan').addClass('hide');
+            $('#questra-manual-plan').addClass('disabled');
+            $('#weeklyWithdrawAmount').val(0);
         }
         //$('#redo').hasClass("hide") && $('#redo').removeClass("hide");
         $( "#calculate_button" ).trigger("click");

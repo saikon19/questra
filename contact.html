@@ -35,65 +35,66 @@
   <!-- <div id="page" data-page="questra-investment-plan"></div> -->
   <!-- Always shows a header, even in smaller screens. -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">
-              <img class="main-logo" src="images/questra-logo-white.png"/>
+        <header class="mdl-layout__header questra_header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">
+              <img class="main-logo" src="images/questra_logo.png"/>
           </span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
-        <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="index.html">Home</a>
-          <a class="mdl-navigation__link" href="">About</a>
-          <a class="mdl-navigation__link" href="contact.html">Contact</a>
-          <a class="mdl-navigation__link" href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496">Register</a>
+            <!-- <span><h3 class="main_heading"> Calculator</h3></span> -->
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="questra-navigation mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="index.html">Home</a>
+            <a class="mdl-navigation__link" href="about.html">About</a>
+            <a class="mdl-navigation__link is-active" href="contact.html">Contact</a>
+            <a class="mdl-navigation__link" href="register.html">Register</a>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <img style="height: 200px;" class="side-logo" src="images/side-logo.png"/>
+        <span class="mdl-layout-title">
+        </span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="index.html">Home</a>
+            <a class="mdl-navigation__link" href="about.html">About</a>
+            <a class="mdl-navigation__link" href="contact.html">Contact</a>
+            <a class="mdl-navigation__link" href="register.html">Register</a>
         </nav>
       </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <img class="side-logo" src="images/side-logo.png" />
-      <span class="mdl-layout-title">
-        </span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="index.html">Home</a>
-        <a class="mdl-navigation__link" href="">About</a>
-        <a class="mdl-navigation__link" href="contact.html">Contact</a>
-        <a class="mdl-navigation__link" href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496">Register</a>
-      </nav>
-    </div>
     <main class="mdl-layout__content">
       <div class="page-content">
         <!-- Your content goes here -->
         <div class="main-content" style="min-height:800px">
           <div class="mdl-grid mdl-cell--12-col">
             <div class="mdl-cell--12-col mdl-shadow--4dp card-margin">
-              <h3 class="heading_text card-padding">Contact Us</h3>
+              <h3 class="heading_text">Contact Us</h3>
             </div>
             <div class="card-margin mdl-shadow--4dp mdl-cell--12-col">
               <form class="" style="margin:auto;max-width:300px;padding:10px" id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyuP8rsqtEW8wetPPI9nBhDZjywIdL9kmgdnw7eoJyeDol1r9Q/exec">
 
               <fieldset class="mdl-textfield mdl-js-textfield">
-                <label class="mdl-textfield__label " for="name">Name </label>
-                <input class="mdl-textfield__input " id="name" name="name" required />
+                <!-- <label class="mdl-textfield__label " for="name">Name </label> -->
+                <input class="contact_input" id="name" name="name" placeholder="Name" required />
               </fieldset>
 
               <fieldset class="mdl-textfield mdl-js-textfield">
-                <label class="mdl-textfield__label " for="message">Message </label>
-                <textarea class="mdl-textfield__input " id="message" name="message" rows="5" required></textarea>
+                <!-- <label class="mdl-textfield__label " for="message">Message </label> -->
+                <textarea class="contact_input " style="height:80px;" id="message" name="message" rows="5" placeholder="Message" required></textarea>
               </fieldset>
 
               <fieldset class="mdl-textfield mdl-js-textfield">
-                <label class="mdl-textfield__label " for="email">Email Address</label>
-                <input class="mdl-textfield__input" id="email" name="email" type="email" value="" required />
+                <!-- <label class="mdl-textfield__label " for="email">Email Address</label> -->
+                <input class="contact_input" id="email" name="email" type="email" value="" placeholder="Email Address" required />
                 <span id="email-invalid" style="display:none">
                     Must be a valid email address</span>
               </fieldset>
 
               <fieldset class="mdl-textfield mdl-js-textfield">
-                <label class="mdl-textfield__label " for="contact">Contact Number</label>
-                <input class="mdl-textfield__input " id="contact" name="contact" required />
+                <!-- <label class="mdl-textfield__label " for="contact">Contact Number</label> -->
+                <input class="contact_input " id="contact" name="contact" placeholder="Mobile Number" required />
               </fieldset>
               <div style="margin-bottom:50px;" class="text_center">
                 <button class="mdl-button mdl-js-button mdl-button--raised">
@@ -112,14 +113,19 @@
         </div>
       </div>
       <footer class="mdl-mini-footer">
-        <div class="mdl-mini-footer__left-section">
-          <div class="mdl-logo">Questra India</div>
-          <ul class="mdl-mini-footer__link-list">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Privacy & Terms</a></li>
-          </ul>
+            <div class="mdl-mini-footer__left-section">
+              <div class="mdl-logo"><a href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496" target="_blank"><img style="height:40px;" src="images/logo_white.png" /></a></div>
+              <div class="mdl-logo"><a href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496" target="_blank"><img style="height:40px;" src="images/logo-v.png" /></a></div>
+              <!-- <div class="mdl-logo">Questra India</div> -->
+              <ul class="mdl-mini-footer__link-list">
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+              </ul>
+            </div>
+        </footer>
+        <div class="footer">
+               <p style="padding:3px 0; margin-bottom:0px">Questra India</p> 
         </div>
-      </footer>
     </main>
 
   </div>
