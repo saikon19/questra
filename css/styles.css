@@ -1,5 +1,27 @@
 body{
     font-size: 12px;
+    width:100%;
+    height:100%;
+    margin: 0;
+    padding:0;
+}
+
+@media (min-width:1024px){
+    marquee{
+       width: 890px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1023px){
+    marquee{
+       width: 660px;
+    }
+}
+
+@media (min-width:0px) and (max-width:767px){
+    marquee{
+       max-width: 300px;
+    }
 }
 
 h5{
