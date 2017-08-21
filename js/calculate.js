@@ -229,13 +229,6 @@ $(document).ready(function () {
     });
     $('#calculate_button').on('click', function (argument) {
 
-        if($('#weeklyWithdrawAmount').val() ==0){
-            $("#sum_with").addClass('hide');
-        }
-        else{
-            $("#sum_with").removeClass('hide');
-        }
-
         // Find the next Friday after next Monday
         var date = new Date();
         date.setDate(date.getDate() + (8 - date.getDay()) % 7 + 4);
