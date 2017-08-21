@@ -274,8 +274,8 @@ p {
     display: block;
     right: 0;
     bottom: 0;
-    margin-right: 15px;
-    margin-bottom: 15px;
+    margin-right: 20px;
+    margin-bottom: 20px;
     z-index: 900;
     background-color: rgb(205, 220, 57);
 }
@@ -442,8 +442,8 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
     margin-right: 50px;
 }
 
-.md-button--fab{
-    width: 40px;
+.mdl-button--fab {
     height: 40px;
-    max-width: 40px;
+    min-width: 40px;
+    width: 40px;
 }
