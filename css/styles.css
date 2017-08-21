@@ -75,11 +75,23 @@ h5{
     /* box-shadow: 0 2px 2px 0 rgba(46,60,73,.05); */
     border-radius: 2px;
     color: #000;
-    
 }
 
 .qo-input{
     height: 54px;
+    max-width: 250px;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #dbe2e8;
+    font-size: 24px;
+    box-shadow: 0 2px 2px 0 rgba(46,60,73,.05);
+    border-radius: 2px;
+    color: #000;
+}
+
+.qi-input{
+    height: 36px;
     max-width: 250px;
     box-sizing: border-box;
     padding-left: 15px;
@@ -154,6 +166,19 @@ h5{
     color: #000;
 }
 
+.QIN_input{
+    height: 34px;
+    max-width: 180px;
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 0px solid #dbe2e8;
+    font-size: 14px;
+    /* box-shadow: 0 2px 2px 0 rgba(46,60,73,.05); */
+    border-radius: 2px;
+    color: #000;
+}
+
 .QN_select{
     height: 34px;
     max-width: 200px;
@@ -185,7 +210,7 @@ p {
     padding:  6px;
      text-align: left;
      height:34px;
-     font-weight: 500;
+     font-weight: 700;
      font-size: 12px;
      text-transform: uppercase;
 }
@@ -208,7 +233,7 @@ p {
 }
 
 .mdl-data-table .table_pack td:first-of-type, .mdl-data-table th:first-of-type {
-    padding-left: 24px;
+    padding-left: 14px;
 }
 
 .img-pkg{
@@ -333,6 +358,7 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
     padding: 1px 0;
     color: white;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 .card_margin_top{
@@ -340,7 +366,7 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 }
 
 .card_padding_inner{
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .contact_input{
@@ -382,4 +408,36 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
     background-color: transparent !important;
     border-bottom: 4px solid transparent;
     border-bottom: 4px solid rgb(244,67,54);
+}
+
+.mdl-color_blue{
+    color:white;
+    background-color: rgb(33, 150, 243);
+}
+
+.sum_text
+{
+    font-size: 24px;
+    color: rgb(139, 195, 74);
+    font-weight: 700;
+    text-align: center;
+    padding: 5px;
+    line-height: 35px;
+}
+
+.card_top{
+    padding: 1px 0;
+    /* text-transform: uppercase; */
+    font-weight: 300;
+    /* color:rgb(33, 150, 243); */
+    text-align: center;
+    font-size: 14px;
+}
+
+#plan_a{
+    margin-right: 50px;
+}
+
+#plan_c{
+    margin-right: 50px;
 }

@@ -49,11 +49,13 @@ function currencyConverter(crate, currency_input){
     var EUR_GBP = currencyRates("EUR","GBP");
     var crate = 0;
 
+
 $(document).ready(function () {
     revenue = ($("#pro_id").val())/100;
     $("#pro_id").on("input", function (){
         revenue = ($("#pro_id").val())/100;
     });
+
     
     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
     var x = EUR_USD,y ="&dollar;";
@@ -69,16 +71,16 @@ $(document).ready(function () {
 
     function changelbl(x,y){
         var con = x * $('#startInvest').val();
-        $("#currency_label").html(y + "&nbsp;" + Math.round(con));
+        $("#currency_label").html(y + "&nbsp;" +qlString(Math.round(con)));
         for(var i=0; i<labels.length;i++){
-            $("#"+labels[i]+"").html(""+y+"&nbsp;"+Math.round(currencyConverter(x, prices[i]))+"");
+            $("#"+labels[i]+"").html(""+y+"&nbsp;"+qlString(Math.round(currencyConverter(x, prices[i])))+"");
         }
         $("#con_rates").html(y+"&nbsp;"+x);
      }
 
       function changeMainlbl(x,y){
         var con = x * $('#startInvest').val();
-        $("#currency_label").html(y + "&nbsp;" + Math.round(con));
+        $("#currency_label").html(y + "&nbsp;" +qlString(Math.round(con)));
      }
 
     var sc_value;
@@ -125,6 +127,13 @@ $(document).ready(function () {
         changelbl(EUR_USD,"&dollar;");
         changeMainlbl(x,y);
 
+        function qlString(n){
+            if(y=="&#8377;")
+                return n.toLocaleString('en-IN');
+            else
+                return n.toLocaleString('en-US');
+        }
+
     $('[data-toggle="popover"]').popover();
     //$('.questra-radio').click(function(){
     //    $(this).popover('show');
@@ -149,18 +158,22 @@ $(document).ready(function () {
     $('#table_view').click(function(){
             if($(this).prop("checked") == true){
                 $('#table_fullview').removeClass('hide');
+                $('#print_week').removeClass('disabled');
             }
             else if($(this).prop("checked") == false){
                $('#table_fullview').addClass('hide');
+               $('#print_week').addClass('disabled');
             }
         });
 
     $('#table_year').click(function(){
             if($(this).prop("checked") == true){
                 $('#summary_table').removeClass('hide');
+                $('#print_year').removeClass('disabled');
             }
             else if($(this).prop("checked") == false){
                $('#summary_table').addClass('hide');
+               $('#print_year').addClass('disabled');
             }
         });
 
@@ -215,6 +228,14 @@ $(document).ready(function () {
         $( "#calculate_button" ).trigger("click");
     });
     $('#calculate_button').on('click', function (argument) {
+
+        if($('#weeklyWithdrawAmount').val() ==0){
+            $("#sum_with").addClass('hide');
+        }
+        else{
+            $("#sum_with").removeClass('hide');
+        }
+
         // Find the next Friday after next Monday
         var date = new Date();
         date.setDate(date.getDate() + (8 - date.getDay()) % 7 + 4);
@@ -251,6 +272,7 @@ $(document).ready(function () {
         var toWeek = parseInt(($('#toWeek').val() == "" ? 0 : $('#toWeek').val()));
         var total_withdraw = 0;
 
+        $('#print_buttons').removeClass('hide');
         $('#table_result').hasClass('hide')&&$('#table_result').removeClass('hide')
         var table_result = $('#table_result tbody');
         var Summary_table_result = $('#Summary_table_result tbody');
@@ -373,21 +395,21 @@ $(document).ready(function () {
             }
 
             week_profit = Math.round(week_profit * 100) / 100;
-            $('#week_profit_' + week + '').html("&euro; " + week_profit);
+            $('#week_profit_' + week + '').html("<span>&euro;&nbsp;" + qlString(week_profit)+"</span>");
 
             account = Math.round(account * 100) / 100;
-            $('#account_' + week + '').html("&euro; " + account);
+            $('#account_' + week + '').html("<span>&euro;&nbsp;" + qlString(account) +"</span>");
 
-            $('#money_invested_' + week + '').html("&euro; " + money_invested);
+            $('#money_invested_' + week + '').html("<span>&euro;&nbsp;" + qlString(money_invested) +"</span>");
 
             allow_withdraw_amount = Math.round(allow_withdraw_amount * 100) / 100;
-            $('#withdraw_amount_' + week + '').html("&euro; " + allow_withdraw_amount);
+            $('#withdraw_amount_' + week + '').html("<span>&euro;&nbsp;" + qlString(allow_withdraw_amount) +"</span>");
 
             if(week_interval % 1 == 0){
-                $('#week_profit_s' + week + '').html("&euro; " + week_profit+"("+y+Math.round(x*week_profit)+")");
-                $('#account_s' + week + '').html("&euro; " + account +"("+y+Math.round(x*account)+")");
-                $('#money_invested_s' + week + '').html("&euro; " + money_invested +"("+y+Math.round(x*money_invested)+")");
-                $('#withdraw_amount_s' + week + '').html("&euro; " + allow_withdraw_amount +"("+y+Math.round(x*allow_withdraw_amount)+")");
+                $('#week_profit_s' + week + '').html("<span>&euro;&nbsp;" + qlString(week_profit)+"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*week_profit))+")</span>");
+                $('#account_s' + week + '').html("<span>&euro;&nbsp;" + qlString(account) +"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*account))+")</span>");
+                $('#money_invested_s' + week + '').html("<span>&euro;&nbsp;" + qlString(money_invested) +"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*money_invested))+")</span>");
+                $('#withdraw_amount_s' + week + '').html("<span>&euro;&nbsp;" + qlString(allow_withdraw_amount) +"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*allow_withdraw_amount))+")</span>");
             }
             date.setDate(date.getDate() + 7);
         }
@@ -395,9 +417,9 @@ $(document).ready(function () {
         // Summary
         total_withdraw = Math.round(total_withdraw * 100) / 100;
         var summary = $('#summary');
-        $('#summary_startInvest').html("&euro; " + $('#startInvest').val() +"("+y+Math.round(x*$('#startInvest').val())+")");
+        $('#summary_startInvest').html("&euro;&nbsp;" + qlString($('#startInvest').val()) +"("+y+"&nbsp;"+qlString(Math.round(x*$('#startInvest').val()))+")");
         $('#summary_numOfWeek').html(num_of_week);
-        $('#summary_moneyInvested').html("&euro; " + money_invested +"("+y+Math.round(x*money_invested)+")" );
+        $('#summary_moneyInvested').html("&euro;&nbsp;" + qlString(money_invested) +"<br>"+"("+y+"&nbsp;"+qlString(Math.round(x*money_invested))+")" );
         var numOfPackagesSummary = "";
         for (var i = 0; i < numOfPackagesArr.length; i++) {
             if (numOfPackagesArr[i] > 0) {
@@ -409,10 +431,10 @@ $(document).ready(function () {
         $('#summary_nextWeek').html(num_of_week + 1);
         var summary_imcome = week_profit + allow_withdraw_amount;
         summary_imcome = Math.round(summary_imcome * 100) / 100;
-        $('#summary_income').html("&euro; " + summary_imcome +"("+y+Math.round(x*summary_imcome)+")");
+        $('#summary_income').html("&euro;&nbsp;" + qlString(summary_imcome) +"<br>("+y+"&nbsp;"+qlString(Math.round(x*summary_imcome))+")");
         if (total_withdraw > 0) {
             $('#summary_withdraw').removeClass('hide');
-            $('#summary_totalWithdraw').html("&euro; " + total_withdraw +"("+y+Math.round(x*total_withdraw)+")");
+            $('#summary_totalWithdraw').html("&euro;&nbsp;" + qlString(total_withdraw)  +"("+y+"&nbsp;"+qlString(Math.round(x*total_withdraw))+")");
             $('#summary_fromWeek').html(fromWeek);
             $('#summary_toWeek').html(toWeek);
         }else{
@@ -423,21 +445,34 @@ $(document).ready(function () {
 
             if($('#table_view').prop("checked") == true){
                 $('#table_fullview').removeClass('hide');
+                $('#print_week').removeClass('disabled');
             }
             else if($('#table_view').prop("checked") == false){
                $('#table_fullview').addClass('hide');
+               $('#print_week').addClass('disabled');
             }
     
             if($('#table_year').prop("checked") == true){
                 $('#summary_table').removeClass('hide');
+                $('#print_year').removeClass('disabled');
             }
             else if($('#table_year').prop("checked") == false){
                $('#summary_table').addClass('hide');
+               $('#print_year').addClass('disabled');
             }
 
     });
     $('#summary_table').addClass('hide');
     $('#table_fullview').addClass('hide');
     $('#summary').addClass('hide');
+    $('#print_buttons').addClass('hide');
     
 });
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+}

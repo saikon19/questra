@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Questra - India</title>
+        <title>Questra - Life</title>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -98,7 +98,7 @@
                              <div id="remain" class="form-group hide">
                                 <p style="margin-bottom:0"><label class="label label-warning">Remain : &euro; <span id="remain_number"></span></label></p>
                             </div>
-                           <div style="padding-bottom:10px"></div>
+                           <div style="padding-bottom:1px"></div>
                         </div>
                     </div>
                     <div class="mdl-shadow--4dp card_margin_top">
@@ -106,7 +106,8 @@
                             <h5>Profit Percentage</h5>
                         </div>
                         <div  style="font-size:20px; padding:10px 0;">
-                            Profit %: <input class="QN_input" style="font-size:20px" type="number" min="0" value="5.3" id="pro_id"/></input>
+                            <div class="input_container qi-input"> %: <input class="QIN_input" style="font-size:20px" type="number" min="0" value="5.3" id="pro_id"/></input>
+                            </div>
                         </div>
                         <div class="mdl-tooltip" for="pro_id">
                             <b>Profit Percentage</b>
@@ -131,7 +132,8 @@
                         </div>
                         <div class="input_currency">
                             <label id="currency_label">N/A</label>
-                            <a id="info" href="#"><i class="material-icons">info</i></a>
+                            <p style="font-size:10px; margin-bottom:0px;">Current Conversion Rates:<span style="font-size:10px">1 &euro; = <label id="con_rates">N/A</label></span> </p>
+                            <!-- <a id="info" href="#"><i class="material-icons">info</i></a> -->
                             <div class="mdl-tooltip" for="info">
                                 <b>Current Conversion Rate</b>
                                 <p>Current Conversion Rates:<br/><span style="font-size:18px">1 &euro; = <label id="con_rates">N/A</label></span> </p>
@@ -142,7 +144,7 @@
                     <div class="mdl-shadow--4dp card_margin_top">
                         <div class="card_head"><h5>Viewing Options</h5></div>
                         <div style="display:flex; padding:10px">
-                            <div id="week_table_info" style="width:70%;">
+                            <div id="week_table_info" style="width:70%;text-align: left; margin-left: 20px">
                                 Show Week Table
                             </div>
                             <div style="width:30%;">
@@ -157,7 +159,7 @@
                             <p>Week by wSeek Questra profit calculations table are toggled on or off using switch</p>
                         </div>
                         <div style="display:flex; padding:10px">
-                            <div id="year_table_info" style="width:70%;">
+                            <div id="year_table_info" style="width:70%;text-align: left; margin-left: 20px;">
                                 Show Year End Table
                             </div>
                             <div style="width:30%;">
@@ -328,9 +330,9 @@
                                     <p>Withdraw 100% profit every week until payback then reinvested.</p>
                             </div>
                             <br/>
-                            <label class="mdl-radio mdl-js-radio" for="questra-invest-plan-C">
+                            <label id="plan_c" class="mdl-radio mdl-js-radio" for="questra-invest-plan-C">
                                 <input type="radio" id="questra-invest-plan-C" name="questra-invest-plan" class="mdl-radio__button" >
-                                <span id="plan_c" class="mdl-radio__label">Plan C</span>
+                                <span  class="mdl-radio__label">Plan C</span>
                                 <div class="mdl-tooltip" for="plan_c">
                                     <b>Plan C</b>
                                     <p>Withdraw weekly half profit, reinvesting the other half.</p>
@@ -473,25 +475,66 @@
                         <div class="card_head">
                             <h5 class="text_center ">Summary</h5>
                         </div>
-                    <div class="card-padding">
-                        <p>Initial amount of investment : <b><span id="summary_startInvest"></span></b></p>
-                        <p><b>After <span id="summary_numOfWeek"></span> weeks :</b></p>
-                        <ul style='list-style-type: disc; padding-left: 20px;'>
-                            <li>
-                                <p style='margin-bottom: 5px;'>Total invest : <b>~ <span id="summary_moneyInvested"></span></b></p>
-                            </li>
-                            <li>
-                                <p style='margin-bottom: 5px;'>Active packages : <span id="summary_numOfActivePackages"></span></p>
-                            </li>
-                            <li>
-                                <p style='margin-bottom: 5px;'>Weekly income from <span id="summary_nextWeek"></span><sup>th</sup> week  : <b>~ <span id="summary_income"></span></b></p>
-                            </li>
-                            <li id="summary_withdraw">
-                                <p style='margin-bottom: 5px;'>Total money withdrew : <b><span id="summary_totalWithdraw"></span></b> from week <span id="summary_fromWeek"></span> to week <span id="summary_toWeek"></span></p>
-                            </li>
-                        </ul>
+                        <div class="card-padding mdl-grid">
+                        <div class="text_center" style="width:100%">
+                            <div class="card_top">
+                                Initial amount of investment : 
+                            </div>
+                           <b>
+                                <div class="sum_text" id="summary_startInvest">
+                                </div>
+                            </b> 
+                        </div>
+                        <div style="text-align: center;width:100%" class="">
+                                <p>
+                                    <b>After 
+                                        <span style="color:rgb(33, 150, 243);"
+                                         id="summary_numOfWeek">
+                                        </span> weeks :</b>
+                                </p>
+                        </div>
+                       <div class="mdl-cell--4-col">
+                           <div class="card_top">
+                                Total invest :
+                           </div>
+                           <div class="sum_text">
+                                <b><span id="summary_moneyInvested"></span></b>
+                           </div>
+                       </div>
+
+                       <div class="mdl-cell--4-col">
+                           <div class="card_top">
+                                Active packages : 
+                           </div>
+                           <div class="sum_text">
+                                <span id="summary_numOfActivePackages"></span>
+                           </div>
+                       </div>
+                       <div class="mdl-cell--4-col">
+                           <div class="card_top">
+                                Weekly income from <span style="color:rgb(33, 150, 243);" id="summary_nextWeek"></span><sup>th</sup> week : 
+                           </div>
+                           <div class="sum_text">
+                                <b> <span id="summary_income"></span></b>
+                           </div>
+                       </div>
+                        <div id="sum_with" class="text_center" style="width:100%">
+                            <div class="card_top">
+                                    Total money withdraw <br> From week <span id="summary_fromWeek"></span> to week <span id="summary_toWeek"></span>:
+                            </div>
+                            <div class="sum_text">
+                                    <b><span id="summary_totalWithdraw"></span></b>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="text_center" style="width:100%;" id="print_buttons">
+                    <span><a id="print_week" style="margin:5px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast disabled" type="button" onclick="printDiv('table_fullview')">Print Week Calculations</a></span>&nbsp;
+                    <span><a id="print_year" style="margin:5px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast disabled" type="button" onclick="printDiv('summary_table')">Print Year Calculations</a></span>&nbsp;
+                    <span><a id="print_summary" style="margin:5px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast" type="button" onclick="printDiv('summary')">Print Summary</a></span>&nbsp;
+                </div>
+
             </div>
           </div>
         </div>
@@ -501,17 +544,20 @@
               <div class="mdl-logo"><a href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496" target="_blank"><img style="height:40px;" src="images/logo-v.png" /></a></div>
               <!-- <div class="mdl-logo">Questra India</div> -->
               <ul class="mdl-mini-footer__link-list">
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Privacy & Terms</a></li>
+                <li><a style="color:white" href="#">FAQ'S</a></li>
+                <li><a style="color:white" href="#">Terms of Use</a></li>
+                <li><a style="color:white" href="#">Contact</a></li>
               </ul>
             </div>
         </footer>
         <div class="footer">
-               <p style="padding:3px 0; margin-bottom:0px">Questra India</p> 
+               <p style="padding:3px 0; margin-bottom:0px">Questra Life</p> 
         </div>
       </main>
     
     </div>
-     <a href="register.html" target="_blank" id="register" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Register</a>
+     <a href="register.html" target="_blank" id="register" 
+     class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast">
+     <img class="material-icons" height="" width="" src="images/register.png"/></a>
     </body>
 </html>
