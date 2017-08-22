@@ -47,8 +47,11 @@ function currencyConverter(crate, currency_input){
     var EUR_INR = currencyRates("EUR","INR");
     var EUR_USD = currencyRates("EUR","USD");
     var EUR_GBP = currencyRates("EUR","GBP");
+    var EUR_JPY = currencyRates("EUR","JPY");
+    var EUR_CAD = currencyRates("EUR","CAD");
+    var EUR_AUD = currencyRates("EUR","AUD");
+    var EUR_AUD = currencyRates("EUR","CNY");
     var crate = 0;
-
 
 $(document).ready(function () {
     revenue = ($("#pro_id").val())/100;
@@ -56,7 +59,6 @@ $(document).ready(function () {
         revenue = ($("#pro_id").val())/100;
     });
 
-    
     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
     var x = EUR_USD,y ="&dollar;";
     var sc = document.getElementById('sc');
@@ -95,6 +97,18 @@ $(document).ready(function () {
             case "GBP":
                         crate = EUR_GBP;
                         break;
+            case "JPY":
+                        crate = EUR_JPY;
+                        break;
+            case "CAD":
+                        crate = EUR_CAD;
+                        break;
+            case "AUD":
+                        crate = EUR_AUD;
+                        break;
+            case "CNY":
+                        crate = EUR_CNY;
+                        break;
             default :
                         crate = 0;
          }
@@ -113,6 +127,17 @@ $(document).ready(function () {
             case "GBP":
                         symbol = "&pound;";
                         break;
+            case "JPY":
+                        symbol = "&#165;";
+                        break;
+            case "CAD": 
+                        symbol = "&#36;";
+                        break;
+            case "AUD":
+                        symbol = "&#36;"
+                        break;
+            case "CNY":
+                        symbol = "&#165;"
             default :
                         symbol = "&dollar;";
          }
@@ -215,6 +240,7 @@ $(document).ready(function () {
         $('#toWeek').val(0);
          $('#summary_table').addClass('hide');
         $('#table_fullview').addClass('hide');
+        $('#print_buttons').addClass('hide');
         $('#summary').addClass('hide');
     });
     $("input[name='questra-invest-plan']").change(function(e){
@@ -229,6 +255,7 @@ $(document).ready(function () {
     });
     $('#calculate_button').on('click', function (argument) {
 
+        $('#print_buttons').removeClass('hide');
         // Find the next Friday after next Monday
         var date = new Date();
         date.setDate(date.getDate() + (8 - date.getDay()) % 7 + 4);
@@ -265,7 +292,6 @@ $(document).ready(function () {
         var toWeek = parseInt(($('#toWeek').val() == "" ? 0 : $('#toWeek').val()));
         var total_withdraw = 0;
 
-        $('#print_buttons').removeClass('hide');
         $('#table_result').hasClass('hide')&&$('#table_result').removeClass('hide')
         var table_result = $('#table_result tbody');
         var Summary_table_result = $('#Summary_table_result tbody');
@@ -399,10 +425,10 @@ $(document).ready(function () {
             $('#withdraw_amount_' + week + '').html("<span>&euro;&nbsp;" + qlString(allow_withdraw_amount) +"</span>");
 
             if(week_interval % 1 == 0){
-                $('#week_profit_s' + week + '').html("<span>&euro;&nbsp;" + qlString(week_profit)+"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*week_profit))+")</span>");
+                $('#week_profit_s' + week + '').html("<span>&euro;&nbsp;" + qlString(week_profit)+"</span><span>&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*week_profit))+")</span>");
                 $('#account_s' + week + '').html("<span>&euro;&nbsp;" + qlString(account) +"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*account))+")</span>");
-                $('#money_invested_s' + week + '').html("<span>&euro;&nbsp;" + qlString(money_invested) +"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*money_invested))+")</span>");
-                $('#withdraw_amount_s' + week + '').html("<span>&euro;&nbsp;" + qlString(allow_withdraw_amount) +"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*allow_withdraw_amount))+")</span>");
+                $('#money_invested_s' + week + '').html("<span>&euro;&nbsp;" + qlString(money_invested) +"</span><span>&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*money_invested))+")</span>");
+                $('#withdraw_amount_s' + week + '').html("<span>&euro;&nbsp;" + qlString(allow_withdraw_amount) +"</span><span>&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*allow_withdraw_amount))+")</span>");
             }
             date.setDate(date.getDate() + 7);
         }
@@ -410,9 +436,9 @@ $(document).ready(function () {
         // Summary
         total_withdraw = Math.round(total_withdraw * 100) / 100;
         var summary = $('#summary');
-        $('#summary_startInvest').html("&euro;&nbsp;" + qlString($('#startInvest').val()) +"("+y+"&nbsp;"+qlString(Math.round(x*$('#startInvest').val()))+")");
+        $('#summary_startInvest').html("&euro;&nbsp;" + qlString($('#startInvest').val()) +"&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*$('#startInvest').val()))+")");
         $('#summary_numOfWeek').html(num_of_week);
-        $('#summary_moneyInvested').html("&euro;&nbsp;" + qlString(money_invested) +"<br>"+"("+y+"&nbsp;"+qlString(Math.round(x*money_invested))+")" );
+        $('#summary_moneyInvested').html("&euro;&nbsp;" + qlString(money_invested) +""+"&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*money_invested))+")" );
         var numOfPackagesSummary = "";
         for (var i = 0; i < numOfPackagesArr.length; i++) {
             if (numOfPackagesArr[i] > 0) {
@@ -424,10 +450,10 @@ $(document).ready(function () {
         $('#summary_nextWeek').html(num_of_week + 1);
         var summary_imcome = week_profit + allow_withdraw_amount;
         summary_imcome = Math.round(summary_imcome * 100) / 100;
-        $('#summary_income').html("&euro;&nbsp;" + qlString(summary_imcome) +"<br>("+y+"&nbsp;"+qlString(Math.round(x*summary_imcome))+")");
+        $('#summary_income').html("&euro;&nbsp;" + qlString(summary_imcome) +"&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*summary_imcome))+")");
         if (total_withdraw > 0) {
             $('#summary_withdraw').removeClass('hide');
-            $('#summary_totalWithdraw').html("&euro;&nbsp;" + qlString(total_withdraw)  +"("+y+"&nbsp;"+qlString(Math.round(x*total_withdraw))+")");
+            $('#summary_totalWithdraw').html("&euro;&nbsp;" + qlString(total_withdraw)  +"&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*total_withdraw))+")");
             $('#summary_fromWeek').html(fromWeek);
             $('#summary_toWeek').html(toWeek);
         }else{
@@ -438,20 +464,16 @@ $(document).ready(function () {
 
             if($('#table_view').prop("checked") == true){
                 $('#table_fullview').removeClass('hide');
-                $('#print_week').removeClass('disabled');
             }
             else if($('#table_view').prop("checked") == false){
                $('#table_fullview').addClass('hide');
-               $('#print_week').addClass('disabled');
             }
     
             if($('#table_year').prop("checked") == true){
                 $('#summary_table').removeClass('hide');
-                $('#print_year').removeClass('disabled');
             }
             else if($('#table_year').prop("checked") == false){
                $('#summary_table').addClass('hide');
-               $('#print_year').addClass('disabled');
             }
 
     });
