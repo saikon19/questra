@@ -50,7 +50,7 @@ function currencyConverter(crate, currency_input){
     var EUR_JPY = currencyRates("EUR","JPY");
     var EUR_CAD = currencyRates("EUR","CAD");
     var EUR_AUD = currencyRates("EUR","AUD");
-    var EUR_AUD = currencyRates("EUR","CNY");
+    var EUR_CNY = currencyRates("EUR","CNY");
     var crate = 0;
 
 $(document).ready(function () {
@@ -138,6 +138,7 @@ $(document).ready(function () {
                         break;
             case "CNY":
                         symbol = "&#165;"
+                        break;
             default :
                         symbol = "&dollar;";
          }
