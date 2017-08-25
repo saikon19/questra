@@ -33,8 +33,9 @@
     <script>
         $.cookie('language', 'en', { expires: 7, path: '/' });
     </script>
-    <script type="text/javascript" src="js/navigation.js"></script>
+    <!-- <script type="text/javascript" src="js/navigation.js"></script> -->
     <script type="text/javascript" src="js/calculate.js"></script>
+    <link rel="stylesheet" type="text/css" href="dialog-polyfill.css" />
     <link rel="stylesheet" href="css/styles.css"> </head>
 <body>
     <!-- <div id="page" data-page="questra-investment-plan"></div> -->
@@ -105,16 +106,18 @@
                                 </div>
                                 <form class="card_padding_inner">
                                     <div class=" mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-                                        <!-- <label class="mdl-selectfield__label" for="professsion2">Select Currency</label> --><select style="" class="QN_select mdl-selectfield__select required" id="sc" name="sc">
-                              <option value="INR" >Select Currency</option>
-                              <option value="INR">INR</option>
+                                        <!-- <label class="mdl-selectfield__label" for="professsion2">Select Currency</label> -->
+                            <select class="QN_select mdl-selectfield__select required" id="sc" name="sc">
+                              <option value="INR" >Select</option>
+                              <!-- <option value="INR">INR</option>
                               <option value="USD" selected>USD</option>
                               <option value="GBP">GBP</option>
                               <option value="JPY">JPY</option>
                               <option value="CAD">CAD</option>
                               <option value="AUD">AUD</option>
-                              <option value="CNY">CNY</option>
-                            </select> <span class="QN_select" style="margin-left:10px;display:inline;font-size:14px; padding: 8px 5px;"
+                              <option value="CNY">CNY</option> -->
+                            </select> 
+                            <span class="QN_select" style="margin-left:10px;display:inline;font-size:14px; padding: 8px 5px;"
                                             id="info">
                                  *1 &euro; = <label id="con_rates">N/A</label>
                             </span>
@@ -255,7 +258,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="mdl-cell--4-col card-margin">
+                        <div class="mdl-cell--4-col mdl-cell--8-col-tablet card-margin">
                             <div class="mdl-shadow--4dp text_center">
                                 <div class=" card_head">
                                     <h5>Investment Plan <span id="plan_info"><i class="material-icons"></i></span></h5>
@@ -359,9 +362,36 @@
                                     role="button" title="Reset">Reset</a> 
                             </div>
                             <div>
-                                <p style="font-size:11px; text-decoration: none; text-align:center; margin-bottom:0px;">By clicking calculate you agree to <a href="#" target="_blank">terms of use.</a></p>
+                                <p style="font-size:11px; text-decoration: none; text-align:center; margin-bottom:0px;">By clicking calculate you agree to <a class="terms_link" id="tos" type="button" >terms of use.</a></p>
                             </div>
                         </div>
+
+                        <div>
+                            <dialog class="mdl-dialog">
+                                <h5 class="mdl-dialog__title">Terms of Use</h5>
+                                <div class="mdl-dialog__content">
+                                  <p>
+                                    Questra Investment Calculator is an application for calculating the likely income derived from Questra World. It is not used to generate profits or to recommend a program. All content is purely informational and educational in nature.
+                                  </p>
+                                  <p>
+                                    <b>Non-liability</b><br>
+                                    Questra World is not responsible for the information presented on this application.This is not the official Questra World application.
+                                  </p>
+                                  <p>
+                                    <b>Income disclaimer</b><br>
+                                    All profit and income examples, that are calculated here are estimates only, which you probably can earn. Profit shares are dependent on the operating results and can not be guaranteed.
+                                  </p>
+                                  <p>
+                                    <b>Risk warning</b><br>
+                                    Questra World underlies economical and enterprising risks like every company. Therefore it is possible to loose all your money or part of it. You shouldn't spend money which you can not afford to loose.
+                                  </p>
+                                </div>
+                                <div class="mdl-dialog__actions">
+                                  <button type="button" class="mdl-button close">close</button>
+                                </div>
+                              </dialog>
+                        </div>
+
                         <div id="print_calc" style="width:100%">
                             <div id="table_fullview" class="mdl-cell--12-col card-margin mdl-shadow--4dp">
                                 <div class="text_center">
@@ -459,7 +489,6 @@
                     <!-- <div class="mdl-logo">Questra India</div> -->
                     <ul class="mdl-mini-footer__link-list">
                         <li><a href="#">FAQ'S</a></li>
-                        <li><a href="#">Terms of Use</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
@@ -469,5 +498,20 @@
             </div>
         </main>
     </div> <a href="register.html" target="_blank" id="register" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast">
-     <img class="material-icons" height="" width="" src="images/register.png"/></a> </body>
+     <img class="material-icons" height="" width="" src="images/register.png"/></a>
+    </body>
+    <script src="dialog-polyfill.js"></script>
+    <script>
+        var dialog = document.querySelector('dialog');
+        var showDialogButton = document.querySelector('#tos');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        showDialogButton.addEventListener('click', function() {
+          dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+          dialog.close();
+        });
+      </script>
 </html>

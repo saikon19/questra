@@ -12,10 +12,7 @@ body{
     }
 }
 
-@media (min-width:768px) and (max-width:1023px){
-    marquee{
-       width: 660px;
-    }
+
 }
 
 @media (min-width:0px) and (max-width:767px){
@@ -386,6 +383,13 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
     transition: box-shadow .3s ease,border .3s ease;
 }
 
+@media (min-width:476px) and (max-width:1024px){
+    .mdl-dialog{
+     width:400px
+    }
+
+}
+
 @media (max-width: 475px){
     .contact_input{
         width: 220px;
@@ -400,6 +404,14 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
         height: 40px;
         min-width: 40px;
         width: 40px;
+    }
+    .mdl-dialog{
+        width: 280px;
+        margin: 20px;
+    }
+    .mdl-dialog__content{
+        overflow: auto;
+        height: 245px;
     }
 }
 
@@ -465,4 +477,16 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 
 .mdl-mini-footer__link-list a{
     color: white;
+}
+
+.mdl-dialog{
+    width: auto;
+    max-width: 700px;
+    /* height: 400px; */
+    overflow: auto;
+}
+
+.terms_link{
+    cursor: pointer;
+    color: rgb(211, 47, 47);
 }

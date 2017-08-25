@@ -15,57 +15,74 @@ function getDateFormated(e) {
     return a + "/" + r + "/" + t
 }
 
-function httpGet(theUrl)
-{
-    var xmlHttp = null;
-    xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false );
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
+// function httpGet(theUrl)
+// {
+//     var xmlHttp = null;
+//     xmlHttp = new XMLHttpRequest();
+//     xmlHttp.open( "GET", theUrl, false );
+//     xmlHttp.send( null );
+//     return xmlHttp.responseText;
+// }
+
+function Get(yourUrl){
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET",yourUrl,false);
+    Httpreq.send(null);
+    return Httpreq.responseText;          
 }
 
-var currency_from = ""; 
-var currency_to = "";
-var currency_input = 0;
+var Json_Obj=JSON.parse(Get('https://api.fixer.io/latest'));
 
-function currencyRates(currency_from,currency_to){
-var yql_base_url = "https://query.yahooapis.com/v1/public/yql";
-var yql_query = 'select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20("'+currency_from+currency_to+'")';
-var yql_query_url = yql_base_url + "?q=" + yql_query + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-var http_response = httpGet(yql_query_url);
-var http_response_json = JSON.parse(http_response);
-//console.log(http_response);
-var rate = http_response_json.query.results.rate.Rate;
-return rate
-}
+
+// var currency_from = ""; 
+// var currency_to = "";
+// var currency_input = 0;
+
+// function currencyRates(currency_from,currency_to){
+// var yql_base_url = "https://query.yahooapis.com/v1/public/yql";
+// var yql_query = 'select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20("'+currency_from+currency_to+'")';
+// var yql_query_url = yql_base_url + "?q=" + yql_query + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+// var http_response = httpGet(yql_query_url);
+// var http_response_json = JSON.parse(http_response);
+// //console.log(http_response);
+// var rate = http_response_json.query.results.rate.Rate;
+// return rate
+// }
 
 
 function currencyConverter(crate, currency_input){
     return crate * currency_input;
 }
 
-    var EUR_INR = currencyRates("EUR","INR");
-    var EUR_USD = currencyRates("EUR","USD");
-    var EUR_GBP = currencyRates("EUR","GBP");
-    var EUR_JPY = currencyRates("EUR","JPY");
-    var EUR_CAD = currencyRates("EUR","CAD");
-    var EUR_AUD = currencyRates("EUR","AUD");
-    var EUR_CNY = currencyRates("EUR","CNY");
-    var crate = 0;
-
 $(document).ready(function () {
+
+    var myDDL = document.getElementById("sc");
+    for (i = 0; i < Object.keys(Json_Obj.rates).length; i++) {
+       var option = document.createElement("option");
+       option.text = Object.keys(Json_Obj.rates)[i];
+       option.value = Object.values(Json_Obj.rates)[i];
+       try {
+           myDDL.options.add(option);
+       }
+       catch (e) {
+           alert(e);
+       }
+    }
+    
+
     revenue = ($("#pro_id").val())/100;
     $("#pro_id").on("input", function (){
         revenue = ($("#pro_id").val())/100;
     });
 
+    
     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
+    var EUR_USD = Object.values(Json_Obj.rates)[29];
     var x = EUR_USD,y ="&dollar;";
     var sc = document.getElementById('sc');
         sc.addEventListener('change', function() {
-            x = selectCurrency(this.value);
-            y = selectCurrencySymbol(this.value);
-            // console.log(this.value);
+            x = this.value;
+            y = selectCurrencySymbol(this.options[this.selectedIndex].text );
             changelbl(x,y);
         // currencyConverter(crate,$('#startInvest').val());
         
@@ -86,35 +103,6 @@ $(document).ready(function () {
      }
 
     var sc_value;
-    function selectCurrency(sc_value){
-        switch(sc_value){
-            case "INR":
-                        crate = EUR_INR;
-                        break;
-            case "USD":
-                        crate = EUR_USD;
-                        break;
-            case "GBP":
-                        crate = EUR_GBP;
-                        break;
-            case "JPY":
-                        crate = EUR_JPY;
-                        break;
-            case "CAD":
-                        crate = EUR_CAD;
-                        break;
-            case "AUD":
-                        crate = EUR_AUD;
-                        break;
-            case "CNY":
-                        crate = EUR_CNY;
-                        break;
-            default :
-                        crate = 0;
-         }
-                    // console.log(crate);
-                    return crate;
-    }
     var symbol="";
     function selectCurrencySymbol(sc_value){
         switch(sc_value){
@@ -140,7 +128,7 @@ $(document).ready(function () {
                         symbol = "&#165;"
                         break;
             default :
-                        symbol = "&dollar;";
+                        symbol = "&loz;";
          }
                     // console.log(symbol);
                     return symbol;
