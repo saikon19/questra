@@ -36,7 +36,18 @@
     <!-- <script type="text/javascript" src="js/navigation.js"></script> -->
     <script type="text/javascript" src="js/calculate.js"></script>
     <link rel="stylesheet" type="text/css" href="dialog-polyfill.css" />
-    <link rel="stylesheet" href="css/styles.css"> </head>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+    .hide{
+            display:none!important;
+    }
+
+    .show{
+          display:block!important
+    }
+    </style>
+
+</head>
 <body>
     <!-- <div id="page" data-page="questra-investment-plan"></div> -->
     <!-- Always shows a header, even in smaller screens. -->
@@ -51,13 +62,16 @@
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
                 <nav class="questra-navigation mdl-navigation mdl-layout--large-screen-only"> <a class="mdl-navigation__link is-active" href="index.html">Calculator</a> <a class="mdl-navigation__link"
-                        href="about.html">About</a> <a class="mdl-navigation__link" href="contact.html">Contact</a> <a class="mdl-navigation__link"
+                        href="quick_info.html">Quick-Info</a> <a class="mdl-navigation__link" href="contact.html">Contact</a> <a class="mdl-navigation__link"
                         href="register.html">Register</a> </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer"> <img style="height: 200px;" class="side-logo" src="images/side-logo.png" /> <span class="mdl-layout-title">
         </span>
-            <nav class="mdl-navigation"> <a class="mdl-navigation__link" href="index.html">Calculator</a> <a class="mdl-navigation__link" href="about.html">About</a>                <a class="mdl-navigation__link" href="contact.html">Contact</a> <a class="mdl-navigation__link" href="register.html">Register</a>                </nav>
+            <nav class="mdl-navigation"> <a class="mdl-navigation__link" href="index.html">Calculator</a> <a class="mdl-navigation__link" href="quick_info.html">Quick-Info</a>                
+                <a class="mdl-navigation__link" href="contact.html">Contact</a> 
+                <a class="mdl-navigation__link" href="register.html">Register</a>                
+            </nav>
         </div>
         <main class="mdl-layout__content">
             <div class="page-content">
@@ -66,7 +80,7 @@
                     <div class="mdl-grid mdl-cell--12-col">
                         <div class="mdl-cell--12-col mdl-shadow--4dp" style="margin:3px 25px 0 5px; border-radius:16px;background-color:#dedede">
                         <img class="mdl-chip__contact" style="float:left; display:inline;margin:0" src="images/announce.ico"></img>
-                            <marquee style="margin-left:35px;margin-right:15px;display:inherit;padding-top:5px;">Register with our team and get the world's best support from our team of experts</marquee>
+                            <marquee style="margin-left:35px;margin-right:15px;display:inherit;padding-top:5px;">Register with us and get the world's best support from our team of experts</marquee>
                         </div>
                         <div class="mdl-cell--4-col text_center card-margin ">
                             <div class="mdl-shadow--4dp">
@@ -261,42 +275,42 @@
                         <div class="mdl-cell--4-col mdl-cell--8-col-tablet card-margin">
                             <div class="mdl-shadow--4dp text_center">
                                 <div class=" card_head">
-                                    <h5>Investment Plan <span id="plan_info"><i class="material-icons"></i></span></h5>
+                                    <h5>Investment Strategy <span id="plan_info"><i class="material-icons"></i></span></h5>
                                 </div>
                                 <div style="padding-bottom:10px;margin:auto;"> <label id="plan_a" class="mdl-radio mdl-js-radio" for="questra-invest-plan-A">
                                 <input type="radio" id="questra-invest-plan-A" name="questra-invest-plan" class="mdl-radio__button" checked>
-                                <span class="mdl-radio__label">Plan A</span>
+                                <span class="mdl-radio__label">Strategy A</span>
                             </label>
-                                    <div class="mdl-tooltip" for="plan_a"> <b>Plan A</b>
+                                    <div class="mdl-tooltip" for="plan_a"> <b>Strategy A</b>
                                         <p> Reinvest all weekly profit.</p>
                                     </div> <label id="plan_b" class="mdl-radio mdl-js-radio" for="questra-invest-plan-B">
                                 <input type="radio" id="questra-invest-plan-B" name="questra-invest-plan" class="mdl-radio__button" >
-                                <span class="mdl-radio__label">Plan B</span>
+                                <span class="mdl-radio__label">Strategy B</span>
                             </label>
-                                    <div class="mdl-tooltip" for="plan_b"> <b>Plan B</b>
+                                    <div class="mdl-tooltip" for="plan_b"> <b>Strategy B</b>
                                         <p>Withdraw 100% profit every week until payback then reinvested.</p>
                                     </div> <br/> 
                             <label id="plan_c" class="mdl-radio mdl-js-radio" for="questra-invest-plan-C">
                                 <input type="radio" id="questra-invest-plan-C" name="questra-invest-plan" class="mdl-radio__button" >
-                                <span  class="mdl-radio__label">Plan C</span>
+                                <span  class="mdl-radio__label">Strategy C</span>
                                 <div class="mdl-tooltip" for="plan_c">
-                                    <b>Plan C</b>
+                                    <b>Strategy C</b>
                                     <p>Withdraw weekly half profit, reinvesting the other half.</p>
                                 </div>
                             </label> 
                             <label class="mdl-radio mdl-js-radio" for="questra-invest-plan-D">
                                 <input type="radio" id="questra-invest-plan-D" name="questra-invest-plan" class="mdl-radio__button" >
-                                <span id="plan_d" class="mdl-radio__label">Plan D</span>
+                                <span id="plan_d" class="mdl-radio__label">Strategy D</span>
                                 <div class="mdl-tooltip" for="plan_d">
-                                    <b>Plan D</b>
+                                    <b>Strategy D</b>
                                     <p>Reinvesting all weekly profit half cycle, then withdraw weekly income.</p>
                                 </div>
                             </label><br/> 
                             <label id="plan_m" class="mdl-radio mdl-js-radio" for="questra-invest-manual-plan">
                                 <input type="radio" id="questra-invest-manual-plan" name="questra-invest-plan" class="mdl-radio__button" >
-                                <span  class="mdl-radio__label">Manual Plan</span>
+                                <span  class="mdl-radio__label">Manual Strategy</span>
                                 <div class="mdl-tooltip" for="plan_m">
-                                    <b>Manual Plan</b>
+                                    <b>Manual Strategy</b>
                                     <p> Manual add options to withdraw profit</p>
                                 </div>
                             </label> 
@@ -450,7 +464,7 @@
                                                 <td> <span class="sum_text" id="summary_startInvest"></span> </td>
                                             </tr>
                                             <tr>
-                                                <td class="mdl-data-table__cell--non-numeric" style="text-align:center;" colspan="2"><b>After <span style="color:rgb(33, 150, 243);" id="summary_numOfWeek">
+                                                <td class="mdl-data-table__cell--non-numeric" style="text-align:center;" colspan="2"><b>After <span style="font-style: italic;" id="summary_numOfWeek">
                                                         </span> weeks </b></td>
                                             </tr>
                                             <tr>
@@ -463,7 +477,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="mdl-data-table__cell--non-numeric">Weekly income from 
-                                                    <span style="color:rgb(33, 150, 243);" id="summary_nextWeek"></span><sup>th</sup> week :</td>
+                                                    <span style="font-style: italic;" id="summary_nextWeek"></span><sup>th</sup> week :</td>
                                                 <td> <span class="sum_text" id="summary_income"> </td>
                                             </tr>
                                             <tr id="summary_withdraw">
@@ -476,20 +490,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text_center" style="width:100%;" id="print_buttons"> <span><a id="print_week" style="margin:5px" 
-                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast" type="button" onclick="printDiv('print_calc')">Print</a></span>&nbsp;
+                        <div id="editor"></div>
+                        <div class="text_center" style="width:100%;" id="print_buttons"> 
+                            <span><a id="print" style="margin:5px" 
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast" type="button" onclick="printDiv('print_calc')">Save as PDF</a></span>&nbsp;
                             </div>
                     </div>
                 </div>
             </div>
-            <footer class="mdl-mini-footer">
-                <div class="mdl-mini-footer__left-section">
+            <footer class="mdl-mini-footer text_center">
+                <div class="mdl-mini-footer__left-section" style="margin:auto">
                     <div class="mdl-logo"><a href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496" target="_blank"><img style="height:40px;" src="images/logo_white.png" /></a></div>
                     <div class="mdl-logo"><a href="https://private.atlanticgam.es/#/sign-up/partner=P09201492508496" target="_blank"><img style="height:40px;" src="images/logo-v.png" /></a></div>
                     <!-- <div class="mdl-logo">Questra India</div> -->
                     <ul class="mdl-mini-footer__link-list">
-                        <li><a href="#">FAQ'S</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=919441210145"><img class="footer_link_img" target="_blank" src="images/whatsapp.png"/></a></li>
+                        <li><a href="" target="_blank"><img class="footer_link_img"  src="images/telegram.png"/></a></li>
+                        <li><a href="https://www.facebook.com/" target="_blank"><img class="footer_link_img" src="images/facebook.png"/></a></li>
+                        <li><a href="https://www.twitter.com/" target="_blank"><img class="footer_link_img" src="images/twitter.gif"/></a></li>
                     </ul>
                 </div>
             </footer>

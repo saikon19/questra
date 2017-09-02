@@ -33,6 +33,8 @@ function Get(yourUrl){
 
 var Json_Obj=JSON.parse(Get('https://api.fixer.io/latest'));
 
+console.log(Json_Obj);
+
 
 // var currency_from = ""; 
 // var currency_to = "";
@@ -77,8 +79,11 @@ $(document).ready(function () {
 
     
     var labels =["whitelbl","yellowlbl","greenlbl","bluelbl","redlbl","blacklbl","indigolbl"];
-    var EUR_USD = Object.values(Json_Obj.rates)[29];
-    var x = EUR_USD,y ="&dollar;";
+    // var EUR_USD = Object.values(Json_Obj.rates)[29];
+    // var x = EUR_USD,y ="&dollar;";
+    var EUR_INR = Object.values(Json_Obj.rates)[14];
+    var x = EUR_INR,y ="&#8377;";
+    
     var sc = document.getElementById('sc');
         sc.addEventListener('change', function() {
             x = this.value;
@@ -127,8 +132,45 @@ $(document).ready(function () {
             case "CNY":
                         symbol = "&#165;"
                         break;
+            case "KRW":
+                        symbol = "&#8361;"
+                        break;
+            case "MXN":
+                        symbol = "&dollar;"
+                        break;
+            case "MYR":
+                        symbol = "RM"
+                        break;
+            case "NOK":
+                        symbol = "kr"
+                        break;
+            case "SEK":
+                        symbol = "kr";
+                        break;
+            case "NZD":
+                        symbol = "&dollar;";
+                        break;
+            case "PHP":
+                        symbol="&#x20B1;";
+                        break;
+            case "PLN":
+                        symbol="‎zł";
+                        break;
+            case "RUB":
+                        symbol="‎₽";
+                        break;
+            case "SGD":
+                        symbol="&dollar;";
+                        break;
+            case "THB": symbol="‎฿";
+                        break;
+            case "TRY": symbol ="₺";
+                        break;
+            case "ZAR":
+                        symbol="R";
+                        break;
             default :
-                        symbol = "&loz;";
+                        symbol = "&curren;";
          }
                     // console.log(symbol);
                     return symbol;
@@ -138,7 +180,7 @@ $(document).ready(function () {
         changeMainlbl(x,y);
     });
 
-        changelbl(EUR_USD,"&dollar;");
+        changelbl(x,y);
         changeMainlbl(x,y);
 
         function qlString(n){

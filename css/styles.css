@@ -100,10 +100,6 @@ h5{
     color: #000;
 }
 
-.hide{
-    display:none!important;
-}
-
 .disabled
 {
   pointer-events: none;
@@ -111,10 +107,6 @@ h5{
   /* for "disabled" effect */
   opacity: 0.5;
   background: #CCC;
-}
-
-.show{
-    display:block!important
 }
 
 .input_container{
@@ -387,6 +379,11 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
     .mdl-dialog{
      width:400px
     }
+    .iframe_cls{
+        width:100%;
+        height: 315px;
+        padding: 0 0 20px 0 ;
+    }
 
 }
 
@@ -412,6 +409,11 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
     .mdl-dialog__content{
         overflow: auto;
         height: 245px;
+    }
+    .iframe_cls{
+        width:100%;
+        height:315px; 
+        padding: 0 0 20px 0;
     }
 }
 
@@ -448,7 +450,7 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 .sum_text
 {
     font-size: 16px;
-    color: rgb(139, 195, 74);
+    color: #000;
     font-weight: 700;
     text-align: center;
     padding: 5px;
@@ -465,14 +467,14 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 }
 
 #plan_a{
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 #plan_c{
-    margin-right: 100px;
+    margin-right: 50px;
 }
 #plan_m{
-    margin-right:160px;
+    margin-right:137px;
 }
 
 .mdl-mini-footer__link-list a{
@@ -489,4 +491,17 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 .terms_link{
     cursor: pointer;
     color: rgb(211, 47, 47);
+}
+
+@media (min-width: 1025px){
+.iframe_cls{
+    margin:auto;
+    max-width:560px;
+    padding:10px 10px 20px 10px;
+}
+}
+
+.footer_link_img{
+    /* width: 40px; */
+    height: 30px;
 }
