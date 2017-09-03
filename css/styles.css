@@ -280,6 +280,7 @@ p {
 
 .mdl-mini-footer{
     background-color: rgb(244, 67, 54);
+    display: block
 }
 
 .mdl-textfield__label:after {
@@ -504,4 +505,8 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 .footer_link_img{
     /* width: 40px; */
     height: 30px;
+}
+
+.connect_links{
+    background-color: rgb(244, 67, 54);
 }
