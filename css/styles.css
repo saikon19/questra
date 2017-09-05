@@ -280,7 +280,7 @@ p {
 
 .mdl-mini-footer{
     background-color: rgb(244, 67, 54);
-    display: block
+    display: block;
 }
 
 .mdl-textfield__label:after {
@@ -385,6 +385,10 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
         height: 315px;
         padding: 0 0 20px 0 ;
     }
+    .mdl-layout-title{  
+        width: 95%;
+        text-align: center;
+    }
 
 }
 
@@ -415,6 +419,10 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
         width:100%;
         height:315px; 
         padding: 0 0 20px 0;
+    }
+    .mdl-layout-title{  
+        width: 80%;
+        text-align: center;
     }
 }
 
@@ -509,4 +517,32 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 
 .connect_links{
     background-color: rgb(244, 67, 54);
+}
+
+#cur_rate{
+    width: 80px;
+    height: 28px;
+}
+
+.drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+}
+
+.drawer_linkimg{
+    width: 35px;
+}
+
+.mdl-short_link{
+    padding: 10px;
+    width: 30px;
+    display: inline;
+    color: #757575;
+    margin: 0;
+}
+
+marquee a{
+    text-decoration: none;
+    color: #757575;
 }

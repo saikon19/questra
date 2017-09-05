@@ -93,13 +93,19 @@ $(document).ready(function () {
         
     }, false);
 
+    $('#cur_rate').on('input', function() { 
+       x=$(this).val(); // get the current value of the input field.
+       changelbl(x,y);
+    });
+
     function changelbl(x,y){
         var con = x * $('#startInvest').val();
         $("#currency_label").html(y + "&nbsp;" +qlString(Math.round(con)));
         for(var i=0; i<labels.length;i++){
             $("#"+labels[i]+"").html(""+y+"&nbsp;"+qlString(Math.round(currencyConverter(x, prices[i])))+"");
         }
-        $("#con_rates").html(y+"&nbsp;"+x);
+        $("#con_rates").html(y+"&nbsp;");
+        $("#cur_rate").val(x);
      }
 
       function changeMainlbl(x,y){
@@ -457,7 +463,7 @@ $(document).ready(function () {
 
             if(week_interval % 1 == 0){
                 $('#week_profit_s' + week + '').html("<span>&euro;&nbsp;" + qlString(week_profit)+"</span><span>&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*week_profit))+")</span>");
-                $('#account_s' + week + '').html("<span>&euro;&nbsp;" + qlString(account) +"</span><span>("+y+"&nbsp;"+qlString(Math.round(x*account))+")</span>");
+                $('#account_s' + week + '').html("<span>&euro;&nbsp;" + qlString(account) +"</span><span>&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*account))+")</span>");
                 $('#money_invested_s' + week + '').html("<span>&euro;&nbsp;" + qlString(money_invested) +"</span><span>&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*money_invested))+")</span>");
                 $('#withdraw_amount_s' + week + '').html("<span>&euro;&nbsp;" + qlString(allow_withdraw_amount) +"</span><span>&nbsp;("+y+"&nbsp;"+qlString(Math.round(x*allow_withdraw_amount))+")</span>");
             }

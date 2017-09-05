@@ -93,3 +93,17 @@ ul {
     background: rgba(0, 0, 0, 0.9);
   }
   
+  .w3-button{
+      border:none;
+      display:inline-block;
+      outline:0;padding:8px 16px;
+      vertical-align:middle;
+      overflow:hidden;
+      text-decoration:none;
+      color:white;
+      background-color:black;
+      text-align:center;
+      cursor:pointer;
+      font-size: 25px;
+      white-space:nowrap
+    }
