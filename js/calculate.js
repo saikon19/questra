@@ -32,10 +32,6 @@ catch(err){
 
     var Json_Sym = JSON.parse('{"symbol":{"AUD":"&#36;","BGN":"‎лв","BRL":"‎R$","CAD":"C$","CHF":"&curren;","CNY":"&#165;","CZK":"Kč","DKK":"‎kr","GBP":"&pound;","HKD":"&dollar;","HRK":"kn","HUF":"‎Ft","IDR":"‎Rp","ILS":"₪","INR":"&#8377;","JPY":"&#165;","KRW":"&#8361;","MXN":"&dollar;","MYR":"RM","NOK":"kr","NZD":"&dollar;","PHP":"&#x20B1;","PLN":"zł","RON":"&curren;","RUB":"‎₽","SEK":"kr","SGD":"&dollar;","THB":"‎฿","TRY":"₺","USD":"&dollar;","ZAR":"R"}}');
 
-console.log(Json_Obj);
-console.log(Json_Sym);
-
-
 
 function currencyConverter(crate, currency_input){
     return crate * currency_input;
@@ -101,7 +97,6 @@ $(document).ready(function () {
 
     var sc_value;
     function selectCurrencySymbol(sc_value){
-        console.log(sc_value);
         for (var i = 0; i < Object.keys(Json_Sym.symbol).length; i++){
            if(Object.keys(Json_Sym.symbol)[i]==sc_value) {
                return Object.values(Json_Sym.symbol)[i];
