@@ -531,7 +531,7 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 }
 
 .drawer_linkimg{
-    width: 35px;
+    width: 30px;
 }
 
 .mdl-short_link{
@@ -545,4 +545,8 @@ mdl-textfield--floating-label.is-focused .mdl-textfield__label .is-upgraded{
 marquee a{
     text-decoration: none;
     color: #757575;
+}
+
+.mdl_social_links{
+    text-decoration: none;
 }

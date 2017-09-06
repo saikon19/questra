@@ -16,7 +16,6 @@
     />
     <meta name="google-site-verification" content="ZziNW1msRBbZnCcA5srjnsU2zkACrXB_pJShx_Snz6Y" />
     <link rel="shortcut icon" href="images/logo-h.jpg">
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-amber.min.css"/> -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_green-amber.min.css">
@@ -33,9 +32,8 @@
     <script>
         $.cookie('language', 'en', { expires: 7, path: '/' });
     </script>
-    <!-- <script type="text/javascript" src="js/navigation.js"></script> -->
     <script type="text/javascript" src="js/calculate.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="dialog-polyfill.css" />
+    <link rel="stylesheet" type="text/css" href="css/dialog-polyfill.css" />
     <link rel="stylesheet" href="css/styles.css">
     <style>
     .hide{
@@ -61,9 +59,20 @@
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation. We hide it in small screens. -->
-                <nav class="questra-navigation mdl-navigation mdl-layout--large-screen-only"> <a class="mdl-navigation__link is-active" href="index.html">Calculator</a> <a class="mdl-navigation__link"
-                        href="quick_info.html">Quick-Info</a> <a class="mdl-navigation__link" href="contact.html">Contact</a> <a class="mdl-navigation__link"
-                        href="register.html">Register</a> </nav>
+                <nav class="questra-navigation mdl-navigation mdl-layout--large-screen-only"> 
+                    <a class="mdl-navigation__link is-active" href="index.html">Calculator</a> 
+                    <a class="mdl-navigation__link" href="quick_info.html">Quick-Info</a> 
+                    <a class="mdl-navigation__link" id="contact_menu" >Contact</a> 
+                    <a class="mdl-navigation__link" href="register.html">Register</a> 
+                </nav>
+                <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                for="contact_menu">
+                    <li class="mdl-menu__item"><a class="mdl_social_links" href="https://api.whatsapp.com/send?phone=919441210145">Whatsapp</a></li>
+                    <li class="mdl-menu__item"><a class="mdl_social_links" href="https://telegram.me/questralifeteam">Telegram</a></li>
+                    <li class="mdl-menu__item"><a class="mdl_social_links" href="https://facebook.com/Questralifeteam/">Facebook</a></li>
+                    <li class="mdl-menu__item mdl-menu__item--full-bleed-divider"><a class="mdl_social_links" href="https://twitter.com/Questralifeteam/">Twitter</a></li>
+                    <li class="mdl-menu__item"><a class="mdl_social_links" href="contact.html">Drop Message</a></li>
+            </ul>
             </div>
         </header>
         <div class="mdl-layout__drawer"> 
@@ -71,12 +80,12 @@
             <span class="mdl-layout-title">
         </span>
             <nav class="mdl-navigation"> 
-                <a class="mdl-navigation__link" href="index.html">Calculator</a> 
-                <a class="mdl-navigation__link" href="quick_info.html">Quick-Info</a>                
-                <a class="mdl-navigation__link" href="contact.html">Contact</a> 
-                <a class="mdl-navigation__link" href="register.html">Register</a> 
+                <a class="mdl-navigation__link" href="index.html"><img height="30px" src="images/calculator-icon.png" >  Calculator</a> 
+                <a class="mdl-navigation__link" href="quick_info.html"><img height="30px" src="images/info.png" >  Quick-Info</a>                
+                <a class="mdl-navigation__link" href="contact.html"><img height="30px" src="images/contact.png" >  Contact</a> 
+                <a class="mdl-navigation__link" href="register.html"><img height="30px" src="images/register_icon.png" >  Register</a> 
                 <div class="drawer-separator"></div>
-                <a class="mdl-navigation__link" href="https://www.youtube.com/channel/UCDqsWV8IBPxo0LoYMh-efHw">Youtube-Questra</a>  
+                <a class="mdl-navigation__link" href="https://www.youtube.com/channel/UCDqsWV8IBPxo0LoYMh-efHw"><img height="30px" src="images/youtube.png" >  Questra</a>  
                 <div class="drawer-separator"></div>   
                 <span class="mdl-navigation__link" style="color: rgb(244,67,54);">Connect With us</span>   
                 <div style="height:62px">
@@ -126,12 +135,12 @@
                                     <h5>Profit Percentage</h5>
                                 </div>
                                 <div style="font-size:20px; padding:10px 0; ">
-                                    <div class="input_container qi-input" style="margin:0px auto"> % <input class="QIN_input" style="font-size:20px" type="number" min="0" value="5.3" id="pro_id"
+                                    <div class="input_container qi-input" style="margin:0px auto"> % <input class="QIN_input" style="font-size:20px" type="number" min="0" value="5.0" id="pro_id"
                                         /></input>
                                     </div>
                                 </div>
                                 <div class="mdl-tooltip" for="pro_id"> <b>Profit Percentage</b>
-                                    <p>Enter the profit percentage. Default profit percentage is 5.3</p>
+                                    <p>Enter the profit percentage. Default profit percentage is 5.0</p>
                                 </div>
                             </div>
                             <div class="mdl-shadow--4dp card_margin_top text_center">
@@ -543,7 +552,7 @@
     </div> <a href="register.html" target="_blank" id="register" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--accent mdl-color-text--accent-contrast">
      <img class="material-icons" height="" width="" src="images/register.png"/></a>
     </body>
-    <script src="dialog-polyfill.js"></script>
+    <script src="js/dialog-polyfill.js"></script>
     <script>
         var dialog = document.querySelector('dialog');
         var showDialogButton = document.querySelector('#tos');

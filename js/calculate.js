@@ -15,41 +15,26 @@ function getDateFormated(e) {
     return a + "/" + r + "/" + t
 }
 
-// function httpGet(theUrl)
-// {
-//     var xmlHttp = null;
-//     xmlHttp = new XMLHttpRequest();
-//     xmlHttp.open( "GET", theUrl, false );
-//     xmlHttp.send( null );
-//     return xmlHttp.responseText;
-// }
-
 function Get(yourUrl){
     var Httpreq = new XMLHttpRequest(); // a new request
     Httpreq.open("GET",yourUrl,false);
     Httpreq.send(null);
     return Httpreq.responseText;          
 }
+var Json_Obj;
 
-var Json_Obj=JSON.parse(Get('https://api.fixer.io/latest'));
+try{
+    Json_Obj=JSON.parse(Get('https://api.fixer.io/latest'));
+}
+catch(err){
+    Json_Obj=JSON.parse('{"base":"EUR","date":"2017-09-05","rates":{"AUD":1.4902,"BGN":1.9558,"BRL":3.707,"CAD":1.4732,"CHF":1.1407,"CNY":7.7865,"CZK":26.077,"DKK":7.4381,"GBP":0.9174,"HKD":9.3043,"HRK":7.4173,"HUF":306.39,"IDR":15854.0,"ILS":4.2425,"INR":76.248,"JPY":129.99,"KRW":1343.6,"MXN":21.218,"MYR":5.0668,"NOK":9.2788,"NZD":1.6531,"PHP":60.804,"PLN":4.2361,"RON":4.5965,"RUB":68.914,"SEK":9.469,"SGD":1.6115,"THB":39.451,"TRY":4.0954,"USD":1.189,"ZAR":15.39}}');
+}
+
+    var Json_Sym = JSON.parse('{"symbol":{"AUD":"&#36;","BGN":"‎лв","BRL":"‎R$","CAD":"C$","CHF":"&curren;","CNY":"&#165;","CZK":"Kč","DKK":"‎kr","GBP":"&pound;","HKD":"&dollar;","HRK":"kn","HUF":"‎Ft","IDR":"‎Rp","ILS":"₪","INR":"&#8377;","JPY":"&#165;","KRW":"&#8361;","MXN":"&dollar;","MYR":"RM","NOK":"kr","NZD":"&dollar;","PHP":"&#x20B1;","PLN":"zł","RON":"&curren;","RUB":"‎₽","SEK":"kr","SGD":"&dollar;","THB":"‎฿","TRY":"₺","USD":"&dollar;","ZAR":"R"}}');
 
 console.log(Json_Obj);
+console.log(Json_Sym);
 
-
-// var currency_from = ""; 
-// var currency_to = "";
-// var currency_input = 0;
-
-// function currencyRates(currency_from,currency_to){
-// var yql_base_url = "https://query.yahooapis.com/v1/public/yql";
-// var yql_query = 'select%20*%20from%20yahoo.finance.xchange%20where%20pair%20in%20("'+currency_from+currency_to+'")';
-// var yql_query_url = yql_base_url + "?q=" + yql_query + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-// var http_response = httpGet(yql_query_url);
-// var http_response_json = JSON.parse(http_response);
-// //console.log(http_response);
-// var rate = http_response_json.query.results.rate.Rate;
-// return rate
-// }
 
 
 function currencyConverter(crate, currency_input){
@@ -88,6 +73,7 @@ $(document).ready(function () {
         sc.addEventListener('change', function() {
             x = this.value;
             y = selectCurrencySymbol(this.options[this.selectedIndex].text );
+            
             changelbl(x,y);
         // currencyConverter(crate,$('#startInvest').val());
         
@@ -114,72 +100,13 @@ $(document).ready(function () {
      }
 
     var sc_value;
-    var symbol="";
     function selectCurrencySymbol(sc_value){
-        switch(sc_value){
-            case "INR":
-                        symbol = "&#8377;";
-                        break;
-            case "USD":
-                        symbol = "&dollar;";
-                        break;
-            case "GBP":
-                        symbol = "&pound;";
-                        break;
-            case "JPY":
-                        symbol = "&#165;";
-                        break;
-            case "CAD": 
-                        symbol = "&#36;";
-                        break;
-            case "AUD":
-                        symbol = "&#36;"
-                        break;
-            case "CNY":
-                        symbol = "&#165;"
-                        break;
-            case "KRW":
-                        symbol = "&#8361;"
-                        break;
-            case "MXN":
-                        symbol = "&dollar;"
-                        break;
-            case "MYR":
-                        symbol = "RM"
-                        break;
-            case "NOK":
-                        symbol = "kr"
-                        break;
-            case "SEK":
-                        symbol = "kr";
-                        break;
-            case "NZD":
-                        symbol = "&dollar;";
-                        break;
-            case "PHP":
-                        symbol="&#x20B1;";
-                        break;
-            case "PLN":
-                        symbol="‎zł";
-                        break;
-            case "RUB":
-                        symbol="‎₽";
-                        break;
-            case "SGD":
-                        symbol="&dollar;";
-                        break;
-            case "THB": symbol="‎฿";
-                        break;
-            case "TRY": symbol ="₺";
-                        break;
-            case "ZAR":
-                        symbol="R";
-                        break;
-            default :
-                        symbol = "&curren;";
-         }
-                    // console.log(symbol);
-                    return symbol;
+        console.log(sc_value);
+        for (var i = 0; i < Object.keys(Json_Sym.symbol).length; i++){
+           if(Object.keys(Json_Sym.symbol)[i]==sc_value) {
+               return Object.values(Json_Sym.symbol)[i];
+           }
+        }
     }
 
     $("#startInvest").on("input", function () {
